@@ -1,0 +1,1332 @@
+[
+  {
+    "chunk_id": "cs50_week3_algorithms_001",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Introduction",
+    "start_time": 0.0,
+    "end_time": 43.0,
+    "transcript": "",
+    "ocr_text": "",
+    "visual_description": ""
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_002",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Overview",
+    "start_time": 131.99,
+    "end_time": 190.029,
+    "transcript": "All right, this is CS50. This is week 3, and this was an artist's rendition of what various sorting algorithms look and sound like. Recall from week 0 that an algorithm is just step by step instructions for solving some problem to sort information, as in the real world just means to order it from like smallest to largest or alphabetically or some other heuristic. And it's among the algorithms that we're going to focus on today in addition to searching, which of course is looking for. Information as we did in week 02. Among the goals for today are to give you a sense of certain computer science building blocks like there's a lot of canonical algorithms out there that most anyone who studied computer science would know, anyone who leads a tech interview would ask. But more importantly, the goal is to give you different mental models for and methodologies for actually solving problems by giving you a sense of how these, uh, real world algorithms can be translated to actual computers. You and I can control. We thought we'd begin today with an actual algorithm for sort of taking attendance.",
+    "ocr_text": "",
+    "visual_description": "Instructor speaking, no visual aids."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_003",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Overview",
+    "start_time": 190.07,
+    "end_time": 244.77,
+    "transcript": "We of course do this with scanners outside, but we can do it old school whereby I just use my hand or my mind and start doing 123456789, 1011, 12, and so forth. That's going to take quite a few steps because I've got to point at and recite a number for everyone in the room so I could kind of do what my like grade school teachers taught me, which is count by 2s, which would seem to be faster. So like 2468, 1012, 1416, 1820, and clearly that sounds and is actually faster, but I think with a little more intuition and a little more thought back to week zero, I dare say we could actually do much better than that. So if you won't mind, I'd like you to humor us by all standing up in place and think of the number one, if you could, and join us in this here algorithm. So stand up in place and think of the number 1. So at this point in the story, everyone should be thinking of the number 1.",
+    "ocr_text": "",
+    "visual_description": "The instructor is speaking to the camera."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_004",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Overview",
+    "start_time": 245.08,
+    "end_time": 299.089,
+    "transcript": "Step 2 of this algorithm for you is going to be this pair off with someone standing, add their number to yours, and remember the sum. Go OK. At this point in the story, everyone, except maybe one lone person if we've got an odd number of people in the room, is thinking of what number? 2, OK, so next step, one of you in each pair should sit down. OK. Good. Never seen some people sit down so fast. So, those of you who are still standing, the algorithm's still going. So the next step for those of you still standing is this, if still standing, go back to step 2. Ergo repeat or loop if you could.",
+    "ocr_text": "",
+    "visual_description": ""
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_005",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Overview",
+    "start_time": 305.79,
+    "end_time": 364.76,
+    "transcript": "Um And notice if you've gone back to step 2, that leads you to step 3, that leads some of you to step 4, which leads you back to step 2. So this is a loop. Keep going. If still standing, pair off with someone else, still standing, add together, and then one of you sit down. So with each passing second, more and more people should be sitting down. And fewer and fewer are standing. OK. Almost everyone is sitting down. You're getting farther and farther away from each other. That's OK. I can help with some of the math at the end here. All right. I see a few of you still standing, so I'll help out and I'll I'll join you together. So I see you in the middle here. What's your number? 32. OK, go ahead and sit down and I'll pair you off with what's your number?",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing on a stage in front of a large audience, giving a lecture. The audience is seated in rows, facing the instructor. There is a large screen behind the instructor displaying text. The instructor appears to be using a laptop and a pointer to demonstrate something."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_006",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Overview",
+    "start_time": 365.45,
+    "end_time": 417.665,
+    "transcript": "20. OK, you can go ahead and sit down. Uh, who's still Then you're still standing. 27? OK, you can sit down. You guys are still adding together, who's gonna stay standing? OK, what's your number? The worst part is doing like arithmetic across a crowded room, but 27 also? 47. OK, you can sit down. Is anyone still standing? Yeah. Nice, 15. OK, you can sit down. Anyone still standing? OK, so all I've done is sort of automate the process of pairing people up at the end here. When I hit enter, we should hopefully see, oh, the numbers are a little, what's going on there? There we go. When I hit enter, we'll add together all of the numbers that were left. And if you think about the algorithm that we just executed, each of you started with the number 1 and then half of you handed off your number. Then half of you handed off your number, then half of you handed off your number.",
+    "ocr_text": "",
+    "visual_description": "A man in a black shirt is sitting at a desk with a laptop in front of him. He is raising his right fist in the air and smiling."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_007",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Overview",
+    "start_time": 417.834,
+    "end_time": 469.92,
+    "transcript": "So theoretically all of these ones with which we started should be aggregated into the final count, which if this room weren't so big, would just be in one person's mind, and they would have declared what the total number of people in the room is. I'm going to speed that up by hitting enter on the keyboard, and if your execution of this algorithm is correct, there should be. 141 people in the room. According to our old school human though, Kelly, who did this manually one at a time, the total number of people in the room, according to Kelly, if you want to come on up and shouted into the microphone is of course going to be, I don't know, something around 160, I think 160, so not quite the same. OK, but that's pretty good. OK, round of applause for your, your accuracy. OK, so ideally counting one at a time would have been perfectly correct. So we're only off by a little bit.",
+    "ocr_text": "",
+    "visual_description": "A lecture hall with a speaker standing at a podium in front of a large audience. The stage has a green screen and a red banner with Chinese characters."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_008",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Overview",
+    "start_time": 470.01,
+    "end_time": 519.413,
+    "transcript": "Now, presumably that's just because of some bugs in execution of the algorithm, maybe some mental math didn't quite go according to plan, but theoretically your third and final algorithm wherein you all participated, should have been much faster than my algorithm or Kelly's algorithm, whether or not we were counting one at a time or two at a time. Why? We'll think back to week zero when we did the whole phone book example, which was especially fast in it. Final form because we were dividing and conquering, tearing half of the problem away, half of the problem away. And even though it's hard to see in a room like this, it stands to reason that when all of you were standing up, we took a big bite out of the first problem and half of you sat down, half of you sat down, half of you sat down, and theoretically there would have been if you were closer in space, one single person with the final count. So let's see if we can analyze this just a little bit by considering We did. So here's that same algorithm.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing on a stage in front of an audience, gesturing towards a computer screen displaying a code editor with a C program."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_009",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Overview",
+    "start_time": 519.663,
+    "end_time": 570.96,
+    "transcript": "He recall is how we motivated Week zero's demonstration of the phonebook in either digital form, as you might see in an iPhone or Android device, looking for someone, for instance, like John Harvard who might be at the beginning, middle, or end of said phonebook, but we analyzed that algorithm just as we can now this one. So in my very first verbalized algorithm, 1234, you could draw that as a straight line because the relationship between the number of people in the room and the of time it takes is linear. It's a straight line with each additional person in the room. It takes me one more step. So if you think to sort of high school math, there's sort of a slope of one there. And so this N number denoting number of people in the room is indeed a straight line. And on the x axis, as in week 0, we have the size of the problem in people and the time to solve in steps or seconds or whatever your unit of measure is. If and when I started counting 2 at a time, 2468, 10. And so forth.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying a graph with two axes labeled 'time to solve' and 'size of problem'. The graph shows a straight line with a positive slope."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_010",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Overview",
+    "start_time": 571.169,
+    "end_time": 620.414,
+    "transcript": "That still is a straight line because I'm taking two bytes consistently out of the problem until maybe the very end where there's just 1 person left, but it's still a straight line, but it's strictly faster. No matter the size of the problem, if you sort of draw a line vertically, you'll see that you hit the yellow line well before you hit the red line because it's moving essentially twice as fast. But that third and final algorithm, even though in reality it felt like it took a while and I had to kind of bring us to the exciting conclusion by doing some of the math. That looked much more like our 3rd and final phone book example because if you think about it from an opposite perspective, suppose there were twice as many people in the room. Well, it would have taken you all theoretically just one more step. You know, granted one more loop and there might be some substeps in there if you will, but it's really just fundamentally one more step. If the number of people in the room quadrupled, 4 times as many people, well, that's 2 more steps.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard with a graph showing different algorithms."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_011",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Overview",
+    "start_time": 620.544,
+    "end_time": 678.171,
+    "transcript": "equivalently, the amount of time it takes to solve the Attendance problem using that 3rd and final algorithm grows very slowly because it takes a huge number of more people in the room before you even begin to feel the impacts of that growth. And so today indeed, as we talk about not only the correctness of algorithms, we're going to talk about the design of algorithms as well, just as we have code because the smarter you are with your design, the more efficient your algorithms ultimately are going to be and the slow. Where their cost is going to grow and by cost I mean time like here maybe it's money, maybe it's the amount of storage space that you need. Any limited resource is something that we can ultimately measure, and we're not going to do it very precisely. Indeed, we're going to use some broad strokes and some standard mechanisms for describing ultimately the running time, the amount of time it takes for an algorithm or in turn code to actually run. So how can we do this? Well, last week we're called, we set the stage.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a blackboard displaying a graph with three lines labeled 'n', 'n/2', and 'log₂ n' against the x-axis labeled 'size of problem'. The instructor appears to be explaining the graph."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_012",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Overview",
+    "start_time": 678.945,
+    "end_time": 715.0,
+    "transcript": "for talking about something called arrays which were the simplest of data structures inside of a computer where you just take the memory in your computer and you break it up into chunks and you can store a bunch of integers, a bunch of strings, whatever, back to back to back to back, and that's the key characteristic for an array. It is a chunk of memory wherein all of the values they're in are back to back to back, so right next to each other in memory. So we drew this fairly abstractly by drawing a grid like this and I said, Well, maybe this is byte 0 and this is by. 1 billion, whatever the total amount of memory is that you have, we zoomed in and looked at a little something like this a canvas of memory. We talked about what and where you can put things,",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing on stage, gesturing towards a large screen displaying a circuit board."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_013",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Searching",
+    "start_time": 715.13,
+    "end_time": 773.979,
+    "transcript": "but today let's just assume that we want 1234567 chunks of memory for the moment, and inside of them we might put something like these numbers here. Well, the interesting thing about computers is that even though if I were to ask you all find the number 50 in this array, I mean, our eyes quickly. See where it is because we sort of have this bird's eye view of the whole screen and it's obvious where 50 is, but the catch with computers and with code that we write is that really these arrays, these chunks of memory, are equivalent to a whole bunch of closed doors and the computer can't just have this bird's eye view of everything. If the computer wants to see what value is at a certain location, it has to do the metaphorical equivalent of going to that location, opening the door, and looking. Then closing it and moving on to the next. That is to say, a computer can only look at or access one value at a time. Now that's in the simplest form. You can build fancier computers that theoretically can do more than that, but all of the code we write generally is going to assume that model. You can't just see everything at once.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a large screen displaying a series of dots arranged horizontally."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_014",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Searching",
+    "start_time": 774.109,
+    "end_time": 829.94,
+    "transcript": "You have to go to each location in these here lockers, if you will. Starting today too, when we talk about the locations in memory, we're going to use our old zero indexing vernacular. That is to say we start counting from 0 instead of 1. So this will be locker 0, locker 1, locker 2, all the way up to locker 6. So just ingrained in your mind that if you hear something like location 6, that's actually implying that there's at least 7 total locations because we started counting at 0. So that's intentional. We don't have in the real world yellow lockers, so we're going to make this metaphor red instead. We do have these lockers here and suppose that within these 7 lockers physically. On stage we've put a whole bunch of money, monopoly money, if you will, but the goal initially here is going to be to search for some specific denomination of interest and use these physical lockers as a metaphor for what your computer is going to do and what your code ultimately is going to do if we're searching for the solution to a problem like this.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying an array with indices labeled [0] through [6]."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_015",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Searching",
+    "start_time": 830.099,
+    "end_time": 867.0,
+    "transcript": "The input to the problem at hand is 7 lockers, all of whose doors are metaphorically closed, the output of which we want to be a bull, true or false answer. Yes or no, that number is there or no, it is not. So inside of this black box today is going to be the first of our algorithms, step by step instructions for solving some problem where the problem here is defined among all of these dollar bills, specifically the $50 bill. If we could get two volunteers to come on up who are ideally really good at monopoly. OK, how about over here in front and uh how about let me look a little farther and back. OK, over here, there and back. Come on down. All right, as these volunteers kindly come down to the stage,",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a large screen displaying various colored tickets, including denominations such as 5, 10, 50, 100, 500, and 1000. The background includes red lockers and wooden paneling."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_016",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Linear Search",
+    "start_time": 868.409,
+    "end_time": 927.119,
+    "transcript": "we're going to ask them in turn to search for specifically the $50 bill that we've hit in in advance. And if my colleague Kelly could come on up too because we're going to do this twice, once searching in one with one algorithm and a second time with another. Let me go ahead and say hello if you'd like to introduce yourselves to the group. Hey, I'm Jose Garcia. Hi, I'm Caitlin Cow. All right, Jose and Caitlin, nice to meet you both. Come on over and let me go ahead and propose that Jose, um, the first algorithm that I'd like you to do is to find the number 50 and let's keep it simple. Just start from the left and work your way to the right. And with each time you open the door, stand over to the side so people can see what's inside and just hold the dollar amount up for the world to see. All right? The floor is yours. Find us the $50 bill. 20 No, that's good. That's good acting too. Thank you. No, you can shut it just like the computer, all right. No, very clear, thank you.",
+    "ocr_text": "",
+    "visual_description": "Three people standing in front of a table with a laptop and apples on it."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_017",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Linear Search",
+    "start_time": 930.01,
+    "end_time": 986.784,
+    "transcript": "Mm, still no $10 bill. Next locker. $5 bill, not going well. $100 bill, but not the one we want. This 1 $1 bill, still no $50. Of course, you've been sort of set up to fail, but here, amazing, a round of applause, Jose found the $50 bill. All right, so let me ask you, Jose, you found the $50 bill. Um, it clearly took you a long time. Just describe in your own words what was your algorithm, even though I nudged you. Yeah, so my algorithm was basically walk up to the first door available, open it, check if the dollar bill was the dollar bill that I was looking for, and then put it back and then go. The next one. OK, so it's very reasonable because if the $50 bill were there, Jose was absolutely going to find it eventually, if slowly. In the meantime, Kelly's going to kindly reshuffle the numbers behind these doors here.",
+    "ocr_text": "",
+    "visual_description": "A lecture hall with a stage where four people stand behind a table with red boxes. A large screen displays a blue square with the number '60'. The audience is seated in front of the stage."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_018",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Linear Search",
+    "start_time": 986.955,
+    "end_time": 1034.328,
+    "transcript": "And even though Jose took a long time here, I mean, what if Jose like wouldn't have been smart to start from the other end instead, do you think? Um, not necessarily because we don't know if the 50 is going to be at that end. Exactly. So he could have gotten lucky if he sort of flaunted my advice and didn't start on the left, but instead started on the right, boom, he would have solved this in one step. But in general, that's not really going to work out. Maybe half the time it will, you'll get lucky, half the time it won't, but that. Not really a fundamental change in the algorithm whether you go left to right, right to left, to Jose's point, if you don't know anything a priori about the numbers, the best you can probably do is just go through linearly left to right or right to left, so long as you're consistent. Now, could you have jumped around randomly? Uh, I guess I could have, but if again, if they weren't in any like specified order, I don't think it would have helped either.",
+    "ocr_text": "",
+    "visual_description": ""
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_019",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Linear Search",
+    "start_time": 1034.538,
+    "end_time": 1060.0,
+    "transcript": "Yeah, so and additionally, if he just jumped around to random order, then you might get lucky and it might be in the very first one, might have taken fewer steps ultimately, but presumably you're going to have to then keep track of like which locker doors have you opened. So that's going to take some memory or space. Not a big deal with 7 lockers, but if 70 lockers, 700 lockers, even random probably isn't going to be the best job. So let me go ahead and take the mic away and hand it over to Caitlin. You can stay on the stage with us. Caitlin,",
+    "ocr_text": "",
+    "visual_description": "Instructor speaking, no visual aids."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_020",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Binary Search",
+    "start_time": 1060.369,
+    "end_time": 1116.969,
+    "transcript": "what I'd like you to do is approach this a little more intelligently by dividing and conquering the problem, but we're going to give you an advantage over Jose. Kelly has kindly sorted the numbers from smallest to largest from left to right. So accordingly, what's your strategy going to be? Start in the middle, OK, please. And go ahead as before and reveal to the audience what you found, not the 50, the 20, but what do you know, Caitlin, at this point? Correct. So the 20 is going to be to the left. So where might you go next with this 3 locker problem? Let me propose that you maybe go to the middle of the 3. There we go, the middle of the middle. Like that would have been good, but let's. Oh no, oh no, it's up 100 instead. You failed, but what do you know? It's in the middle that I should have just let you, but. Now we have a big round of applause for Kaitlin for having found the 50 as well. OK.",
+    "ocr_text": "",
+    "visual_description": "A person holding a microphone in front of red lockers."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_021",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Binary Search",
+    "start_time": 1118.599,
+    "end_time": 1162.18,
+    "transcript": "So the one catch with this particular demo is that because they know presumably what monopoly money denominations are, because we just did this exercise and we had the whole cheat sheet on the board, you probably had some intuition as to where the 50 was going to be, even though I was trying to get you to play along. But in the general case, if you don't know what the numbers are and that they are the specific denominations, but you do know that they're going from smallest to largest, going to the middle, then the middle of the. Middle, then the middle of the middle again and again would have the effect of starting with a big problem and having it, having it, having it just like the phone book as well. So thanks to you both, we have these wonderful parting gifts that we found in Harvard Square. If you like Monopoly, you'll love the Cambridge edition filled with Harvard Square name spots. So thank you to you both, and a round of applause for our volunteers here.",
+    "ocr_text": "",
+    "visual_description": "The instructor is pointing to the memory address 0x123 on the chalkboard."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_022",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Binary Search",
+    "start_time": 1166.88,
+    "end_time": 1223.15,
+    "transcript": "All right, so let's see if we can't formalize a little bit these two algorithms known as linear search insofar as Jose was searching essentially along a line left to right, and binary search by implying 2 because we were having that problem in 2 again and again and again. So for instance. Linar search from left to right or equivalently right to left, we could document our pseudo code as follows. For each door from left to right, if the 50 is behind the door, well then we're done. Just return true. That's the boolean value which was the goal of this exercise to say yes, here is the 50. Otherwise, at the very bottom of this pseudo code, we could just say return false because if you get all the way through the lockers and you have never once declared true by finding the 50, you might as well default at the very end to saying false, I did not find it. But notice here, just like in week zero when we talked about pseudo code for. Searching the phone book, my indentation of all things is actually very intentional.",
+    "ocr_text": "For each door from left to right\nIf 50 is behind door",
+    "visual_description": "A person standing in front of a blackboard with text on it."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_023",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Binary Search",
+    "start_time": 1223.52,
+    "end_time": 1281.151,
+    "transcript": "This version of this code would be wrong if I instead used our old friend if else and made this conditional decision. Why is this code now in red wrong in terms of correctness? Yeah. Exactly, because if the number 50 is not behind the first door, the E is telling you right then and there return false. But as we've seen in C code, whenever you return a value like that's it for the function, it is done doing its work. And so if you return false right away, not having looked at the other six lockers, you may very well get the answer wrong. So the first version of the code where there wasn't an L but rather this implicit line of code at the or this explicit line of code at the very end that just says if you. Reach this line of code returned false, that addresses that problem. And to be clear, even though it's right after an indented return true when you return a value as in C, that's it like execution stops at that point, at least for the function or in this case the pseudo code in question.",
+    "ocr_text": "each door from left to right\nIf 50 is behind door\nReturn true\nElse\nReturn false",
+    "visual_description": "A man standing in front of a blackboard with a computer program displayed on it."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_024",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Binary Search",
+    "start_time": 1281.482,
+    "end_time": 1340.985,
+    "transcript": "All right, so here's a more computer sciencey way of describing the same algorithm and even though it starts to look a little more arcane, the reality is when you start using variables and sort of standard notation you can actually. Express yourself much more clearly and precisely, even though it might take a little bit of practice to get used to. Here is how a computer scientist would express that exact same ideas instead of saying for each door from left to right we might throw some numbers on the table. So for I, a variable apparently from the value zero on up through the value and minus 1 is what this shorthand notation means. If 50 is behind doors bracket I, so to speak, so now. Sort of treating the notion of doors as an array using our notation from last week. If 50 is behind doors bracket I return true. Otherwise, if you get through the entirety of that array of doors, you can still return false. Now notice here N minus 1 seems a little weird because aren't there end doors? Why do I want to go from 0 to N minus 1 instead of 0 to end? Yeah.",
+    "ocr_text": "For i from 0 to n-1\n50 is behind door\nReturn true\nReturn false",
+    "visual_description": "The instructor is explaining a programming algorithm."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_025",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Binary Search",
+    "start_time": 1341.446,
+    "end_time": 1399.833,
+    "transcript": "Because um 0 is the first. Exactly, if you start counting at 0 and you have n elements, the last one is going to be addressed as n minus 1, not N, because if it were N, then you actually have N + 1 elements, which is not what we're talking about. So again, just a standard notation and it's a little terser this way. It's a little more succinct and frankly it's a little more adaptable to code. And so what you're going to find is that as our problem sets and programming challenges. We assign sort of get a little more involved. It's often helpful to write out pseudo code like this using an amalgam of English, and C, and eventually Python code, because then it's way easier after to just translate your pseudo code into actual code if you're operating at this level of detail. All right, so in the second algorithm where Caitlin kindly searched for 50 again, but Kelly gave her the advantage of sorting the numbers. Advance now she doesn't have to just resort to brute force, so to speak, trying all possible doors from left to right. She can be a little more intelligent about it and pick and choose the locker she opens.",
+    "ocr_text": "for i from 0 to n-1\nif 50 is behind doors[i]\nreturn true\nreturn false",
+    "visual_description": "The instructor is standing in front of a blackboard displaying a piece of code."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_026",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Binary Search",
+    "start_time": 1399.894,
+    "end_time": 1452.29,
+    "transcript": "And so with binary search as we call that, we could implement the same pseudo code or we could implement pseudo code for it as follows. We might say if 50 is behind the middle door, then go ahead and return true. Else if it's not behind the middle door, but 50 is less than that number behind the middle door, we want to go and search the left half so that didn't happen in Caitlin's sense because we ended up going right, so that's just another branch here. LA 50 is greater than what was at the middle door. We want to search the right half, but there's going to be one other condition here that we should probably consider, which is what? Is it here, is it to the left, or is it to the right? But there's another a corner case that we'd better. Keep track of what else could happen if it's not in the ray or really like we're out of doors so we can implement this in a different way.",
+    "ocr_text": "If 50 is behind middle door\nReturn true\nElse if 50 < middle door\n->Search left half\nElse if 50 > middle door",
+    "visual_description": "A man standing in front of a chalkboard with a computer program written on it."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_027",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Binary Search",
+    "start_time": 1452.38,
+    "end_time": 1506.959,
+    "transcript": "I left myself some space at the top because I shouldn't do any of this if there are no doors to search for, so I should have this sort of sanity check whereby if there's no doors left or no doors to begin with, let's just immediately return false. And why is that? Well, notice that when I say search left half and search right half, this is implicitly telling me just do. This again, just do this again, but with fewer and fewer doors, and this is a technique for solving problems and implementing algorithms that we're going to end today's discussion on because what seems very colloquial and very straightforward, OK, search the left half, search the right half, is actually a very powerful programming technique that's going to enable us to write more elegant code, sometimes less code, to solve problems such as this and more on that in just a little bit. But how can we Now formalize this using some of our array notation. Well, it looks a little more complicated, but it isn't really. Instead of asking questions in English alone, I might say if 50 is behind doors bracket middle.",
+    "ocr_text": "If no doors left\nReturn false\nIf 50 is behind middle door\nReturn true\nElse if 50 < middle door\nSearch left half\nElse if 50 > middle door\nSearch right half",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying pseudocode for a binary search algorithm."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_028",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Binary Search",
+    "start_time": 1507.209,
+    "end_time": 1564.989,
+    "transcript": "This soda code presupposes that I did some math and figured out what the numeric address, the numeric index is of the middle element and how can I do that? Well, if I've got 7 doors and I divide by 2, what's that? 7 divide by 2. 3.5, 3.5 makes no sense if I'm using integers to address this, so maybe we just round down, so 3, so that would be locker number 0123, which indeed if you look at the seven lockers is in fact the middle. So this is to say using some relatively simple arithmetic, I can figure out what the address is, the index is of the middle door. How many there are and I divide by 2 and round down. Meanwhile, if I don't find 50 behind the middle door, let's ask the question. If 50 is less than the value at the middle door, then let's search, not the left half per se in the general sense, more specifically search doors 0 through doors bracket middle minus 1.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing on stage in front of a large audience, presenting code on a screen behind him."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_029",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Binary Search",
+    "start_time": 1565.75,
+    "end_time": 1621.0,
+    "transcript": "Otherwise, if 50 is greater than the value at the middle door, go ahead and search doors bracket middle plus 1 through doors bracket and minus 1. Now let's consider these in turn. So searching the left half, as we described this earlier, seems to line up with this idea like start start searching from doors 0, the very first one, but why are we searching doors bracket middle minus 1 instead of doors bracket middle? Yeah. Yeah, exactly. We already checked the middle door by asking this previous question, so you're just wasting everyone's time if you divide the half and still consider that door as checkable again. And same thing here. We check middle + 1 through the end of the locker's array because we already checked the middle one. So same reason, even though it just kind of complicates the look of the math, but it's really just using variables and arithmetic to describe the locations of these same lockers.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying a piece of C++ code."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_030",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Running Time",
+    "start_time": 1621.56,
+    "end_time": 1674.845,
+    "transcript": "But let's consider. Now what we mean by running time, the amount of time it takes for an algorithm to run, and consider which and why one of these algorithms is better than the other. So in general, when talking about running time, we can actually use pictures like this. This is not going to be some like very low level mathematical analysis where we count up lots of values. It's going to be broad strokes so that we can communicate to colleagues, to other humans, generally, whether an algorithm is better than another and how you might compare the two. So here for instance is a pictorial analysis of two different algorithms the phone book from week zero and then the attendance taking from today itself. And let's generally, as we've done before, sort of label these things. So the very first algorithm took end steps in the very worst case if I had to search the whole phone book or if I had to count everyone in the room. So the first algorithm took indeed end steps. The second algorithm took half as many plus 1 maybe, but we'll keep it simple. So we'll call that N over 2.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying a graph with three lines labeled 'time to solve' against 'size of problem'. The instructor appears to be explaining the graph."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_031",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Running Time",
+    "start_time": 1675.124,
+    "end_time": 1729.55,
+    "transcript": "The third and final algorithm both in week 0 with the phone book and today with attendance is technically logbase 2 of N. And if you're a little rusty in your logarithms, that's fine. Just take on faith that logba 2 alludes to taking a problem of size N and dividing it in half and half and half as many times as you can until you're left with one person standing or one page in the phone book. That's how many times you can divide in half a problem of size N. Well, it turns out that we're a little more detailed than most computer scientists care to get when describing the efficiency of algorithms. So in fact we're going to start to use some notation. Instead of worrying precisely mathematically about how many steps today's and the future's algorithms take, we're going to talk in broader strokes about how many steps there are on the order of, and we're going to use what's called big O notation, which literally is like a big O and then some parentheses, and you pronounce it big. of such and such.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying a graph with three lines labeled 'n', 'n/Z', and 'log_n'. The instructor is pointing at the graph."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_032",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Running Time",
+    "start_time": 1729.63,
+    "end_time": 1780.657,
+    "transcript": "So the first algorithm seems to be in big O of n, which means it's on the order of N steps, give or take some. This algorithm here, you might be inclined to do something similar. It's on the order of N divided by 2 steps, and this one's on the order of log based 2 of N steps, but it turns out what we really care about with algorithms is how the time grows as the problem it. Self grows in size. So the bigger end gets, the more concerned we are over how efficient our algorithm is. If only because today's computers are so darn fast, whether you're crunching 1000 numbers or 2000 numbers, like it's going to take like a split second no matter what. But if you're crunching 1000 numbers versus a million numbers versus a billion numbers, like that's where things start to actually be noticeable by us humans and we really start to care about these values. So in general, when using big O.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing on stage in front of a large audience, gesturing towards a presentation slide displaying a graph labeled 'O(n), O(n^2), O(n^3)'. The slide shows three curves representing different time complexities."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_033",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Running Time",
+    "start_time": 1781.306,
+    "end_time": 1838.456,
+    "transcript": "like this, you ignore lower order terms or equivalently you only worry about the dominant term in whatever mathematical expression is in question. So big event remains big event. big O of N over 2, it's the same thing really as like big O over n. Like it's not really, but they're both linear in nature. One grows at this rate, one grows at this rate instead, but it's for all intents and purposes the same. They're both growing at a constant rate. This one too uh it's on the order of log of n where the base is who cares? In short, what does this really mean? Well, imagine in your mind's eye that we were about to zoom out on this graph such that instead of going from 0 to like a million, maybe now the x axis is 0 to a billion, and same thing for the y axis 0 to a million. Let's zoom out so you're seeing. 0 to a billion. Well, in your mind's eye, you might imagine that as you zoom out, essentially things just get more and more compressed visually because you're zooming out and out and out, but these things still look like straight lines.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying a graph comparing different time complexities (O(n), O(log n)). The instructor is pointing at the graph while explaining."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_034",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Running Time",
+    "start_time": 1838.576,
+    "end_time": 1892.55,
+    "transcript": "This thing still looks like curved lines, which is to say as n gets large, clearly this green algorithm, whatever it is, is more appealing, it would seem than either of these two. Algorithms and if we keep zooming out like at some point the ink is going to be so close together that they all are for all intents and purposes pretty much the same algorithm. So this is to say computer scientists don't care about lower order terms like divide by 2 or base 2 or anything like that. We look at the most dominant term that really matters is N gets bigger and bigger. So that then is big O notation. And it's something we'll start to use pretty much recurringly any time we analyze or speak to how good or how bad some algorithm is. So here's a little cheat sheet of common running times. So for instance, here's our friend big O of N, which means the algorithm takes on the order of end steps. Here is one that takes on the order of log N steps. Here are some others we haven't seen yet. Some algorithms take n times logn steps.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying a graph comparing time complexity for different algorithms."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_035",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Running Time",
+    "start_time": 1892.805,
+    "end_time": 1941.38,
+    "transcript": "Some algorithms take squared steps, and some algorithms just take one step, maybe, or maybe 2 steps or 4 steps or 10, but a constant number of steps. So let me ask, if the algorithms we've looked at thus far, for instance, linear search being the very first today, what is the running time of linear search in big O notation? That is to say, if there's people, or if there's N lockers on the stage, how many steps might it take us to find a number among those N lockers? They go of, yeah. Big O of N in fact is exactly where I would put linear search. Why? Well, if you're using linear search in the very worst case, for instance, the number you're looking for, as with Jose, might be all the way at the end. So you might get lucky.",
+    "ocr_text": "",
+    "visual_description": "Instructor speaking, no visual aids."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_036",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Running Time",
+    "start_time": 1941.43,
+    "end_time": 1995.79,
+    "transcript": "It might not be at the very end, but generally it's useful to use this big O notation in the context of worst case scenarios because that really gives you a sense of how badly this algorithm could perform if you just get really unlucky with your data set. So even though BigO really just refers to an upper bound, like how many steps might it take, it's generally useful to think about it in the context of like the worst case scenario, like, ah, the number I care about is actually way over here. But what about binary search? Even in the worst case, so long as the data is sorted, how many steps might binary search take by contrast? Big O of log in. So binary search we're going to put here, which is to say that in general, and especially as N gets large, binary search is much faster. It takes much less time. Why? Because assuming the numbers are sorted, you will be dividing in half and half and half, just like with the phone book in week 0, that problem, and you will get to your solution much faster.",
+    "ocr_text": "O(n^2)\nO(n log n)\nlinear search\nO(log n)\nO(1)",
+    "visual_description": "The instructor is standing in front of a blackboard displaying Big O notation for different algorithms."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_037",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Running Time",
+    "start_time": 1996.56,
+    "end_time": 2056.08,
+    "transcript": "Why should you not use binary search though on an unsorted array of lockers? Like a random set of numbers, yeah. Exactly, you're making these decisions based on inequalities less than or greater than, but based on like no rhyme or reason. You're going left going right, but there's no reason to believe that smaller numbers are this way and bigger numbers are that way. So you're just making incorrect decision after incorrect decision, so you're probably going to miss the number altogether. So binary search on an unsorted array is just incorrect, incorrect usage of the algorithm. But like Kelly did, if you sort the data in advance or you're handed sorted data, well then you can in fact apply binary search perfectly and much more efficiently. Sure there is more efficient. Absolutely. Is Linear search sometimes more efficient if it's going to take you more time to sort the data and then use binary search? Absolutely.",
+    "ocr_text": "",
+    "visual_description": "The instructor is speaking and gesturing with his hands."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_038",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Running Time",
+    "start_time": 2056.219,
+    "end_time": 2101.364,
+    "transcript": "And that's going to be one of the design decisions that underlies any implementation of an algorithm because if it's going to take you some crazy long time, not to sort like 7 numbers, but 70, 700, 7000, 7 million, but you only need to search the data once, then what the heck are you doing? Like why are you wasting time sorting. Data, if you only care about getting an answer once, you might as well just use linear search or heck, do it even randomly and hope you get lucky if you don't care about reproducing the same result. Now, in general, that's not how much of the world works. For instance, Google's working really hard to make faster and faster algorithms because we are not searching Google once and then never again doing it. We're doing it again and again and again so they can amortize. So to speak, the cost of sorting data over lots and lots of searches, but sometimes it's going to be the opposite.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing on stage, gesturing towards a presentation slide behind him."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_039",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Running Time",
+    "start_time": 2101.445,
+    "end_time": 2160.995,
+    "transcript": "And I think back to graduate school, where I was often writing code to analyze large sets of data, and I could have done it the right way, sort of the CS 50 way, by fine tuning my algorithm and thinking really hard about my code, but honestly, sometimes it was easier to just write really bad but correct code, go to sleep for 7 hours, and then my computer would have the answer by morning. The downside, as admittedly happened more than once, is if you have a bug in your code and you go to sleep and then 7 hours later you find out that there was a bug, you've just wasted the entire evening, so there too a trade off sometimes when making those resource decisions. But that's entirely what today is about making informed decisions and sometimes maybe it's smarter and wiser to make the more expensive decision, but not unknowingly, at least knowingly. All right, so there we have our first two algorithms, but let's consider another way of describing the efficiency of an algorithm. Big O is an upper bound, sort of how bad can it get in these cases where maybe the data is really not working to our advantage. Omega, a capital Omega symbol here is used for lower bounds.",
+    "ocr_text": "",
+    "visual_description": ""
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_040",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Running Time",
+    "start_time": 2161.094,
+    "end_time": 2219.33,
+    "transcript": "So maybe how lucky might we get in the best case, if you will, how few steps might an algorithm take? Well, in this case here, here's just a cheat sheet of common run times, even though there's an infinite number of others, but we'll generally focus on functions like these. Let's consider those same algorithms. So with linear search from left to right, how few steps might that algorithm take? For instance, in like the best case scenario. Yeah, is this uh hand about to go up? Yeah, so one step why because maybe Jose could have gotten lucky and opened the door and voila, that was the 50. It didn't play out that way, but it could have. In the general case, the number you're looking for could very well be at the beginning. So we're going to put linear search at omega of 1. So one step, and maybe it's technically a few more than that, but it's a fixed number of steps that Nothing to do with the number of lockers. Case in point, if I gave you not 7, but 70 lockers, you could still get lucky and still take just one step.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a large audience, gesturing towards a screen displaying a list of words."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_041",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Running Time",
+    "start_time": 2219.459,
+    "end_time": 2277.929,
+    "transcript": "So Omega is our lower bound, Big O is our upper bound. Ah, spoiler, what is binary search is lower bound. Well, apparently it's also omega of 1, but why? That is in fact correct, yeah. Same reason you could get lucky in the best case, and it's just smack dab in the middle of all of the data. So the fewest number of steps binary search might take is also actually one. So this is why we talk about upper bound and lower bound because you get kind of a, a sense of the range of performance. Sometimes it's going to be super fast, which is great, but something tells me in the general case we're not going to get lucky every time we use an algorithm, so it's probably going to be closer to those upper bounds, the big. Now, as an aside, there's a 3rd and final symbol that we use in computer science to describe algorithms, that of a capital theta. Capital theta is jargon you can use when big O and Omega happen to be the same, and we'll see that today, not always, but here's a similar cheat sheet.",
+    "ocr_text": "O(n^2)\nO(n log n)\nO(n)\nO(log m)\nO(1)",
+    "visual_description": "A man standing in front of a chalkboard with a list of Big O notation functions."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_042",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Running Time",
+    "start_time": 2278.209,
+    "end_time": 2334.0,
+    "transcript": "None of the algorithms thus far can be described in this way with theta notation because they are not all the same. With their big O and Omega, they differed in both of our analyses, but we'll see at least one example of one where it's like, OK, we can describe this in theta, and that's like saying twice as much information with your words to another computer scientist rather than giving them both the upper and the lower bounds. The fancy way of describing all of what we're talking about here, big O, omega, and theta is asymptotic notation, and asymptotic notation refer or. Asymptoticle refers to a value getting bigger and bigger and bigger and bigger but not necessarily ever hitting some boundary as N gets very large. In short, is what we mean when we deploy this here asymptotic notation. All right, so with the first of these things like linear search, let's actually kind of make this a bit more real. Let me actually go over to in just a moment. Uh my other screen here,",
+    "ocr_text": "asymptotic notation",
+    "visual_description": "A man standing in front of a blackboard with the word 'asymptotic notation' written on it."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_043",
+    "video_id": "week3_algorithms",
+    "chapter_title": "search.c",
+    "start_time": 2334.58,
+    "end_time": 2391.979,
+    "transcript": "OK, in VS code, let me go ahead and create a program called Search.c. and in search.c, let's go ahead and implement a fairly simple version of Linar search initially. So let me go ahead and include, for instance, CS50.h. Let me go ahead and include standardio.h. Then let me go ahead and do main void, so we're not going to bother with any command line arguments for now. And then let me go ahead and just give myself an array of numbers to play with. And we did this briefly last week in answer to a question, but I'm going to do it now concretely rather than use something more manual to get all of these numbers into the array. I'm going to say give me an array called numbers, and the numbers I want to put in this array initially are going to be the exact same denominations we've been playing with 20, 500, 10, 5, 100, 1, and 50. Again, this is a notation that I alluded to in answer to a question last week whereby if you want. To statically initialize an array that is give it all of your values up front without having the human type them all in manually.",
+    "ocr_text": "#include <cs50.h>\n#include <stdio.h>\nint main(void)\n{\n}",
+    "visual_description": "A person sitting at a laptop with a computer code editor open displaying C source code."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_044",
+    "video_id": "week3_algorithms",
+    "chapter_title": "search.c",
+    "start_time": 2392.11,
+    "end_time": 2448.629,
+    "transcript": "You can use curly braces like this, and the compiler is pretty smart. You don't have to bother telling the compiler how many numbers you want 1234567 because it can obviously just count how many numbers are in the curly braces, but you could explicitly say 7 there so long as you're counting is in fact correct. So on line 6 this gives me an array of 7 numbers. Initialize to precisely that list of numbers from left to right. All right, let's ask the human now what number they want to search for, just as I did our two volunteers and say in N equals get in, then let's just ask the user for the number that they want to search for. Then let's implement linear search. And if I want to implement linear search in terms of the programming constructs we've seen thus far, like what type, what keyword in C should I use? What programming technique, yeah. Yeah, so maybe a 4 loop or a Y loop, but 4 loop is kind of my go to lately. So let's do 4 in I equals 0 because we'll start counting from the left.",
+    "ocr_text": "#include <cs50.h>\n#include <stdio.h>\n\nint main(void)\n{\n    int numbers[] = {20, 500, 10, 5, 100, 1, 50};\n}",
+    "visual_description": "A person is sitting in front of a laptop with a code editor open displaying C code."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_045",
+    "video_id": "week3_algorithms",
+    "chapter_title": "search.c",
+    "start_time": 2448.84,
+    "end_time": 2501.135,
+    "transcript": "I is less than 7, which isn't great to hard code, but I'm not going to use the 7 again, so I think it's OK in one place for this demo. Then I + plus, then inside of this array. Let's go ahead and ask a question just like Jose was by opening each of the doors by saying if numbers 1 equals equals the number we asked about N, well then let's go ahead and print out some informative message like found backslashn. And then for good measure, like last week, let's return 0 to signify success. It's sort of equivalent to returning true, but in main recall you have to return an in. That's why we revealed at the end of week 2 the return type of main is an in because that is what gives the computer its so-called exit status, which is zero if all is well, or anything other. 0 if something went wrong, but I think finding the number counts is all is well.",
+    "ocr_text": "",
+    "visual_description": "A person standing in front of a computer screen displaying a C program."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_046",
+    "video_id": "week3_algorithms",
+    "chapter_title": "search.c",
+    "start_time": 2501.426,
+    "end_time": 2560.29,
+    "transcript": "But if we get through that whole loop and we still haven't printed found or returned 0, I think we can go ahead and safely say not found backslashn, and then let's just return 1 as our exit status to indicate that we didn't find the actual number. So in short, I think in See this is linear search. Let me open up my terminal window again. Let me make search enter. Let me do search enter, and I'll search for, as I asked Jose, the number 50, and we indeed found it at the end. Let me go ahead and rerunear and let's search for the other number at the beginning 20. That then works. And just to get crazy, let's search for a number we know not to be there like 1000. And that in fact is not found. So I think we have an implementation then of linear search, but let me pause here and ask if there's any questions with this here code and the translation of algorithm to. See, yeah, in the back.",
+    "ocr_text": "2 #include <stdio.h>\n\n3 int main(void)\n4 {\n5     int numbers [] = {20, 500, 10, 5, 100, 1, 50};\n6\n7     int n = get_int(\"Number: \");\n8     for (int i = 0; i < 7; i++)\n9         ;\n10}\n\nTERMINAL\n$ code search.c\n$ make search\n$ ./search\nNumber: 50",
+    "visual_description": "A person is using a laptop while a terminal window displays code and a message indicating 'Number: 50'. The code includes a function to read an integer input and then processes it."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_047",
+    "video_id": "week3_algorithms",
+    "chapter_title": "search.c",
+    "start_time": 2562.389,
+    "end_time": 2618.459,
+    "transcript": "Why I did not specify the length of the array. So it is not necessary when declaring an array and setting it equal to some known values in advance to specify in the square brackets how many you have because like the compiler is not an idiot. It can literally count the numbers inside. Of the curly braces and just infer that value you could put it there, but arguably you're opening up the possibility that you're going to miscount and you're going to put 7 here but 8 numbers over there or 6 numbers there so it's best not to tempt fate and just let the compiler do its thing instead. A good question. Other questions on this code so far. All right, if none, let's go ahead and maybe convert this linear search to one that's maybe a little more interesting that involves like searching for strings of text. After all, we started the class in week zero by searching for names in a phone book like John Harbert. Let's see if we can adapt our code for searching for strings instead of integers.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying a C program."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_048",
+    "video_id": "week3_algorithms",
+    "chapter_title": "search.c",
+    "start_time": 2618.56,
+    "end_time": 2663.496,
+    "transcript": "So in my code here, let's go ahead and delete everything inside of Maine just to give myself a clean canvas. Let me go ahead and give me another array, this one called, let's just call it strings because that's the goal of this exercise, and set them equal to some familiar pieces from the game of Monopoly if you might have played. So there's like a battleship piece in there. There's a boot in there, there's a cannon in there, an iron, a thimble, and a top hat, though it does vary nowadays based on the addition that you have. So kind of a long array, but I have 123456 total values in this array of strings. Now let's ask the user for a string. We'll call it S for short and say with get string, what string are you looking for among those 6.",
+    "ocr_text": "search.c\n#include <stdio.h>\n\nint main(void)\n{\n    string strings[] = {\"battleship\", \"boot\", \"cannon\", }\n}",
+    "visual_description": "A person is working on a laptop with a code editor open displaying C source code."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_049",
+    "video_id": "week3_algorithms",
+    "chapter_title": "search.c",
+    "start_time": 2663.716,
+    "end_time": 2723.334,
+    "transcript": "Then I think we can do a 4 loop again for in I equals 0, I less than 6, I plus plus, and then inside of this loop, let's do the same thing if Uh, let's say strings bracket i equals equals the strings that the human typed in. I think we can go ahead and say print found backslashn and then as before return. 0 to signify success, and if we don't, after that whole 4 loop, let's print print F not found backslash and down here and return 1 to signify error. So it's really the same thing at the moment, except that I'm actually using strings instead. Integers. All right, let me go ahead and open up my terminal window again and clear it. Let me go ahead and recompile this code. MakeSearch.c. Seems to compile OK. Let me do search and let's go ahead and search for the first one. How about battleship enter.",
+    "ocr_text": "",
+    "visual_description": "The instructor is explaining a C program that searches for a string in an array."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_050",
+    "video_id": "week3_algorithms",
+    "chapter_title": "search.c",
+    "start_time": 2724.58,
+    "end_time": 2782.687,
+    "transcript": "Huh, not found. All right. Well, let's maybe a typo, maybe. Let me search for something easier to spell, boot. Not found. That's weird. Both of those are at the very start of the array. Let's do slashear again and search for top hat. Enter. Not found. What is going on? Well, this isn't actually that obvious as to what I'm doing wrong, but it turns out that when we actually compare strings instead of integers and see, we're actually going to have to use this other library, at least today, that we saw briefly last week. Last week we introduced it because of a function called Stirling, which gives us the length of a string. Turns out that string. H also comes per its documentation with another useful function called Stircom for string. Compare and its purpose in life is to actually compare two strings left and right to make sure they are in fact the same. So for today's purposes, suffice it to say you cannot use equals equals apparently to compare two strings. Intuitively, why is that?",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a blackboard with the word 'string.h' written on it."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_051",
+    "video_id": "week3_algorithms",
+    "chapter_title": "search.c",
+    "start_time": 2782.808,
+    "end_time": 2839.333,
+    "transcript": "Well, for a computer it's super easy to compare two integers because they're either there or they're not in memory. But with a string, it's not just a character and another character, it's like 7. Characters over here and a few characters over here. Maybe it's a few, maybe it's more, you have to compare each and every character in a string to make sure they're in fact the same. So Stir Compare does exactly that, probably in the implementation of Stir Co from like years ago someone wrote a wild loop or a floor loop that looks at each string left to right and compares each and every one of the characters they're in and then gives us back an answer. So how do we go about using this? Well, to use stir compare, what I can actually do in VS code here is go and change my code as follows. Instead of using equals equals, I'm going to actually use this function per its documentation. I'm going to call stir compare, then I'm going to pass in one of the strings, which is in strings bracket I. Then I'm going to pass in the second string, which is S.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a blackboard with the word 'strcmp' written on it."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_052",
+    "video_id": "week3_algorithms",
+    "chapter_title": "search.c",
+    "start_time": 2839.593,
+    "end_time": 2892.639,
+    "transcript": "However, having read the documentation, and this is a little nonobvious, it turns out that Comp will return 0 if the strings are equal. Otherwise it's going to return a positive number or a negative number. So what I care about for now is does the return value of stir comp when given those two strings, give me back zero? If so, they are equal and I'm going to say unquote found. So let's go ahead and open the terminal again. Let me go ahead and clear it and do make search to recompile my code and huh. I've done something wrong. Let's see. Let me scroll up to the very first line in line 11 error call to undeclared library function stir comp would type in and something something which gets more complicated after that. Why is line 11 not working despite what I just preached? Yeah. Yeah, I just did something stupid.",
+    "ocr_text": "",
+    "visual_description": "The instructor is demonstrating a C program that searches for strings in an array."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_053",
+    "video_id": "week3_algorithms",
+    "chapter_title": "search.c",
+    "start_time": 2892.679,
+    "end_time": 2947.32,
+    "transcript": "I didn't include the string.h header library, so all clang our compiler is doing when invoked by Make is it's encountering literally the word stir comp and not knowing what it is because we haven't taught it what it is by simply saying include string. H at the top. OK, let me reopen my terminal window, clear that message. Way to make search again. Now it's compiling search enter. Now I'm going to go ahead and search as I did before for Battleship. Ah, now it's finding it. Let me run ear again. Search for boot. Ah, OK, that's found. Let me go ahead and search for top hat. That too is in there. Let me go ahead and search for something that's not there like the number 50. Not in fact found, so I think we've actually fixed that their problem. But if we go back to this code for a moment, it's indeed the case for the documentation that equals equals 0 is what I want to do. Why in the world would Stir comp be designed to return a positive or a negative number 2?",
+    "ocr_text": "",
+    "visual_description": "A computer screen displaying a C program and a terminal window showing a search command being executed."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_054",
+    "video_id": "week3_algorithms",
+    "chapter_title": "search.c",
+    "start_time": 2947.439,
+    "end_time": 3007.095,
+    "transcript": "It's not returning true or false, it's returning one of three possible values zero, negative or positive. Why might it be useful? Yeah. Um, you could kind of like compare which of the ring is like. Yeah, super clever. So if you're passing in two strings, it's great to know if they're equal, but wouldn't it be nice if this same function could also help us sort these strings ultimately and tell me which one comes first alphabetically? And technically it's not going to be alphabetically, it's going to be a cute phrase askibetically because it's actually going to look at the asy values of the characters and do some quick arithmetic and tell you which one comes first and which one comes later, which is enough. We'll eventually see for actually sorting these strings as well. So in short, the documentation will tell me that I should check not only for zero if I care about equality, but if I care about inequality, that's checking if one comes first or last, I should check whether something is less than 0 or greater than. But for this demonstration, implementing linear search, I don't care about comparing them for inequality.",
+    "ocr_text": "",
+    "visual_description": "Instructor speaking, no visual aids."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_055",
+    "video_id": "week3_algorithms",
+    "chapter_title": "search.c",
+    "start_time": 3007.176,
+    "end_time": 3012.0,
+    "transcript": "All I care about is that they are in fact the same or Not in this case.",
+    "ocr_text": "",
+    "visual_description": "A person is sitting in front of a computer screen displaying a C program. The program includes a main function with a loop that checks for the presence of a string in an array."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_056",
+    "video_id": "week3_algorithms",
+    "chapter_title": "phonebook.c",
+    "start_time": 3012.771,
+    "end_time": 3063.28,
+    "transcript": "All right, well, let's go ahead and do one other example of sort of linear search, but let's make the problem more like that actually in week zero of searching a phone book. So let me go back to VS code here. Close search.c and let's make an actual phone book. So I'm going to say code of phonebook.c and then inside of phonebook.c let's use our same header file. So include CS50. H, includes standard IO. Dot and let's include an advance string.h. Then let's as before do in main void, no command line arguments today. Then inside of here, let me give myself first an array of strings. How about some names in the phone book? So I'm going to say string, names, equals, and then three names just to make a demonstration. Kelly and David and say John Harvard here. But if it's a phone book, I need more than just names. So let me go ahead and give myself another.",
+    "ocr_text": "#include <cs50.h>\n#include <stdio.h>\n#include Mstr;",
+    "visual_description": "A person standing in front of a computer screen displaying a C code file named 'phonebook.c'. The code includes standard library headers."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_057",
+    "video_id": "week3_algorithms",
+    "chapter_title": "phonebook.c",
+    "start_time": 3063.52,
+    "end_time": 3109.6,
+    "transcript": "Array string of numbers open bracket close bracket equals and now the same phone numbers we used in week zero for the three of us plus 1 617495 1000 same for both Kelly and me, so plus 1, 617495 1000. And then as before, if you'd like to text or call John directly, you can do so at plus 1-949-4682750 and semicolon. So one question first, I obviously declared our names to be an array of strings because that's what text is. Why have I also declared phone numbers to be strings and not integers because a phone number is like literally a number in the name of it, yeah.",
+    "ocr_text": "",
+    "visual_description": "A person sitting at a laptop with a computer code editor open displaying C code for a phonebook program."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_058",
+    "video_id": "week3_algorithms",
+    "chapter_title": "phonebook.c",
+    "start_time": 3111.33,
+    "end_time": 3164.254,
+    "transcript": "Yeah, so even though we have phone numbers in the US, even though we have Social Security numbers and a bunch of other things that we call numbers, if you have other non-digits in those, in those values, you have to actually use strings because if it's not an actual integer, but it does have things like pluses or dashes or parentheses or any other form of punctuation, as is common in the US and other countries for phone numbers in particular, you're going to actually want to use strings and not. as well as for corner cases like if there are if you're in the habit back home, if you're not from say the US and you actually have to dial 0 1st to make like a local regional call, you don't want to have a leading zero in an integer because mathematically, as we know from grade school like leading zeros, number 0s that come first have no mathematical meaning, they're going to disappear effectively from the computer's memory unless we store them in fact as characters in strings in this way.",
+    "ocr_text": "include <cs50.h>\ninclude <stdio.h>\ninclude <string.h>\n\nint main(void)\n{\n    string names[] = {\"Kelly\", \"David\", \"John\"};\n    string numbers[] = {\"+1-617-495-1000\", \"+1-617-495-1000\", \"+1-617-495-1000\"};\n}",
+    "visual_description": "The instructor is explaining a C program that includes arrays of strings for names and phone numbers."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_059",
+    "video_id": "week3_algorithms",
+    "chapter_title": "phonebook.c",
+    "start_time": 3164.57,
+    "end_time": 3212.6,
+    "transcript": "OK, with that said, let's go ahead and ask the human now after having declared those two arrays for the name they want to look up the number of. So let's say string name equals get string, and let's go ahead and ask the human for the name for which to search. Then let's use a 4. As before, for in i equals 0, I less than 3, which again for demonstration purposes I'm just hard coding today I + plus and then in the 4 loop I'm going to use our new friend Stircom if the return value of stircompare passing in names bracket I. And the name the human typed in equals equals zero signifying that they are in fact the same. Well, that means we found the location I where the person's name is. So let's go ahead and print out found, but just to be fun, let's print out whom we found. So percent F.",
+    "ocr_text": "#include <cs50.h>\n#include <stdio.h>\n#include <string.h>\n\nint main(void)\n{\n    string names[] = {\"Kelly\", \"David\", \"John\"};\n    string numbers[] = {\"+1-617-495-1000\", \"+1-617-495-1000\", \"+1-617-495-1000\"};\n\n    string name = get_string(\"Name:\");\n    for (int i = 0; i < 3; i++)\n    {\n    }\n}",
+    "visual_description": "The instructor is explaining a C program that reads a name and prints phone numbers."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_060",
+    "video_id": "week3_algorithms",
+    "chapter_title": "phonebook.c",
+    "start_time": 3212.925,
+    "end_time": 3270.149,
+    "transcript": "Backslash N and then output there the number which is going to be in the corresponding numbers array at that same location I will return 0 and at the very end of this program, let's go ahead and print out not found if we get that far and return 1. All right, so a little more complexity this time, but notice I'm comparing the names just like a normal person would in your iOS app or your Android app when looking for someone's name, but what I care about is getting back the number. So that's why two lines later, I'm printing out the number that I found at location I, not the name, because I already know the name. All right. In my terminal window, let's go ahead and make this phone book. phonebook. Let's go ahead and search for John, whose number is hopefully indeed exactly that number. So suffice it to say this code 2 does work. This is a linear search because I'm searching left to right. These aren't actually sorted alphabetically by name or let alone number.",
+    "ocr_text": "",
+    "visual_description": "The instructor is explaining a C program that searches for names in a phonebook."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_061",
+    "video_id": "week3_algorithms",
+    "chapter_title": "phonebook.c",
+    "start_time": 3270.429,
+    "end_time": 3328.093,
+    "transcript": "So I think we're doing well here but I don't necessarily love this implementation even if you're new to programming, what might you not like about how I've implemented a phone book in the computer's memory? Why is this maybe not the best design, yeah. OK, yeah, and I would say, so you're pointing out that we have this duality. We've got two arrays. They're the exact same length, and it just so happens that location zero's name lines up with location 0's number and location 1 and location 2, but we're kind of on the honor system here whereby the onus is on us to make sure we don't screw this up and we make sure we always have the same number of names and the same number of numbers and better and moreover that we may get the order exactly. right, we are just trusting that when we print out the IT number, so to speak, that it lines up with the IT name. So that's fine.",
+    "ocr_text": "int main(void)\n{\n    string *names[] = {\"Kelly\", \"John\", \"Mary\"};\n    string *numbers[] = {\"+1-617-555-0100\", \"+1-617-555-0101\", \"+1-617-555-0102\"};\n\n    string name = get_string(\"Enter your name:\");\n    for (int i = 0; i < 3; i++)\n    {\n        if (strcmp(names[i], name) == 0)\n            printf(\"Hello, %s!\n\", name);\n    }\n}",
+    "visual_description": "The instructor is explaining a C program that reads names and phone numbers from the user."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_062",
+    "video_id": "week3_algorithms",
+    "chapter_title": "phonebook.c",
+    "start_time": 3328.184,
+    "end_time": 3369.0,
+    "transcript": "And honestly for 3 people who really cares, it's fine, but if you think about 30 people, 300, 3 million, well we're not going to hard code them all here, but even in some database that will store them in later in the course feels like just trusting that we're not going to screw this up is asking for trouble. And indeed a lot of programming is just that, like not trusting yourself. And definitely not trusting your colleague not to mess something up, but programming a bit more defensively and trying to encapsulate related information a little more tightly together and not just assume, as on the honor system that these two independent arrays will line up. But at this point we have no means of solving this problem unless we give ourselves just a bit new functionality and syntax.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying a C program."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_063",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Structs",
+    "start_time": 3369.597,
+    "end_time": 3428.34,
+    "transcript": "So I used this phrase earlier to kick things off. Data structures. It's like how you structure your data in the computer's memory. Arrays are the simplest of data structures. They just store data back to back to back from left to right contiguously in memory, but they all have to be, as we've seen, the same kinds of values in, in, in, or string, string string. There's no mechanism yet for storing an in and a string together, and then another in and another string together, or let alone two strings, 2 strings, 2 strings that are somehow a little bit different. But it would be nice if C gave us an actual data type to store people in a phone book such that we could create an array called people inside of which is going to be a whole bunch of persons, if you will, back to back to back, and I want two of them. So wouldn't it be nice if I could literally use this code and see? Well, decades ago when Sem was invented, they didn't give us a person data type. All we have is in and float and char and bull and string and so forth. Person was not among the available data types, but we can invent our own data types it turns out.",
+    "ocr_text": "person people[2];",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying a piece of source code."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_064",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Structs",
+    "start_time": 3428.51,
+    "end_time": 3480.445,
+    "transcript": "So in see what we can do if we want persons to exist and every person in the world shall have a name and a phone number for now, we can do this. Name string number. Now that's a decent start, but it's going to be kind of a stupid implementation if I then just do name string name 1, string name 2, string name 3, string name 4. We've already started down that road last week and decided arrays were a better solution. But here's an alternative when you want to just store related data together. I can use these two keywords and see type death struct, which albeit terse, just means define a new type that is a data structure. So multiple things together inside the curly braces you literally put the two things you want to relate together. Name string number and then outside the curly braces you specify the name you want to give to this brand new custom type that you have invented.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying two lines of code: 'string name;' and 'string number;'. The background shows a classroom setting with red lockers and wooden furniture."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_065",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Structs",
+    "start_time": 3480.794,
+    "end_time": 3531.8,
+    "transcript": "Technically, stylistically, you'll see that Style 50 prefers that the name actually be on the same line as the last curly brace, which looks a little weird to me, but that's what industry tends to do so so be it. But these several lines together tell C invent for me a new data type called person and assume that every person in the world has a string called name and a string called number. And now I can use this new data type in my own code to solve this problem a little bit better. So in fact, let me go ahead and do this as follows. I'm going to go back to VS code here and at the very top of my code above main just to make this. Available to not only main but maybe any future functions I write. I'm going to say type destruct, as we saw on the screen. Inside of my curly braces, I'm going to say string name and string number, and then I'm going to name this thing person.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing at a podium in front of a large audience, presenting a lecture. The audience is seated in rows, facing the instructor. On the stage, there is a large screen displaying some text, and behind the instructor, there are red banners with white logos."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_066",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Structs",
+    "start_time": 3532.09,
+    "end_time": 3587.379,
+    "transcript": "Now I'm going to go about using this and I'm going to go ahead and delete my previous honor system approach of having names and numbers in separate arrays, and I'm instead going to give myself an array of people. We can call it persons, but I'm trying to be somewhat grammatically correct, so I'm going to say people bracket 3 to give myself an array, call people inside of which is room for 3 persons, inside of which is room for a name and number each. So how do I now initialize these values? Well, I'm going to hard code them, that is type them manually, but you can imagine using get string or get or some other function to get this data from the human themselves. I'm going to say go to the people array at location 0. And access the name field, and this is syntax we haven't seen yet, but it's not that hard. You literally use a dot, a single period, to say go inside of that structure and access the name field, the name attribute, so to speak, and let's set that equal to Kelly.",
+    "ocr_text": "",
+    "visual_description": "The instructor is explaining a C program that includes a struct definition for a person and a main function that reads names and numbers into an array of people."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_067",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Structs",
+    "start_time": 3587.629,
+    "end_time": 3639.08,
+    "transcript": "Then let's go into that same array location, people bracket 0 and set the number for the zeroth person to be plus 1617495 1000. Then let's go ahead and do the same thing for people 1. Set that person's name to, for instance, mine, David. Then let's do people bracket 1.n number equals quote unquote, same as Kelly because we're both in the directory. So plus 1 617495 1000. And then lastly, people bracket 2.name equals quote unquote for John Harvard, people 2.n number equals plus 1. 949-4682750 in this case. And now the rest of the code is almost the same. I'm going to now on the new line 24 still ask the user what name they want.",
+    "ocr_text": "typedef struct\n{\n    string name;\n    string number;\n} person;\n\nint main(void)\n{\n    person people[3];\n\n    people[0].name = \"Kelly\";\n    people[0].number = \"+1-617-495-1000\";\n\n    people[1].name = \"David\";\n    people[1].number = \"+1-617\";\n\n    string name = get_string(\"Name:\");\n    for(int i = 0; i < 3; i++)",
+    "visual_description": "The instructor is explaining how to define a structure in C and then create an array of this structure. He is also showing how to initialize the first element of the array."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_068",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Structs",
+    "start_time": 3639.209,
+    "end_time": 3692.84,
+    "transcript": "I'm going to still iterate from 0 to 3 because there's still 3 elements in this array, even though each has two values within, and I'm Compare now not names, but people bracket I.name to go access the name of that person and compare it to the name that the human has typed in. And when I find that person, I'm going to go into the people array at location I but print out the number instead. So all we've done here is add this dot notation which allows you to access the inside of a data structure, and all we've done is introduce up here some new C keywords that let you invent your own data types inside of which you can put most anything you want. I have chosen a string name and a string number. All right, let me go ahead and open my terminal window and clear it from before. Let me do make Phonebook to make this version. So far so good. Make Phonebook enter. I'm going to go ahead now and search for say John.",
+    "ocr_text": "",
+    "visual_description": "The instructor is explaining a C program that reads names and phone numbers into an array."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_069",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Structs",
+    "start_time": 3693.209,
+    "end_time": 3733.0,
+    "transcript": "And I have again found his number, so this is still correct, but even though this took more minutes in terms of the voiceover and it took more lines of code, it's arguably better designed now because at people bracket 0 is an actual person in everything about them. At people bracket 1 is another person in everything about them. And so forth. This is what we mean by encapsulate, you can think of these curly braces as sort of hugging these data types inside of the data structure together so as to keep them together in the computer's memory as well. All right, well, just to set the stage, uh, literally, as we'll strike the lockers and put something else up,",
+    "ocr_text": "",
+    "visual_description": "The instructor is explaining a C program that defines a structure for storing names and phone numbers."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_070",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Sorting",
+    "start_time": 3733.909,
+    "end_time": 3792.199,
+    "transcript": "the efficiency of binary search as implemented by Caitlin was predicated on Kelly having in advance sorted the values up front. But of course we've only considered now the running time of searching for information using two algorithms, and there can be many others. In the real world, but those are two of the most canonical. We found that binary search was faster than linear search, but it required that we sort the data. So to your question earlier, maybe we should consider just how expensive it is in terms of time, money, space, humans to sort data, especially a lot of data, and then decide whether or not it's worth using something like binary search or perhaps even something else. So. The next problem we'll solve today ultimately is given generic input and output. The input to our next problem is going to be unsorted data, so like numbers out of order, the output of which should be sorted data. So for instance, if we pass in 72541, 603, I want whatever black box is implementing my sorting algorithm to spit out 01234567. So that's going to be the question we answer.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a blackboard with the word 'sorting' written on it, gesturing towards the board."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_071",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Sorting",
+    "start_time": 3792.209,
+    "end_time": 3849.75,
+    "transcript": "But first I think it's time for some delightful Hello Pandass chocolate biscuits. Uh, let's take a 10 minute break and snacks are now served. All right, we are back and recall that the cliffhanger on which we left was that how do we go about sorting numbers? Well, here are some numbers, 8 of them in fact, from 0 to 7, but currently unsorted. Um, we don't quite have enough monopoly boards for everyone, but we do have some delightful, uh. For Mario Brothers Pez dispensers, if I could get 8 volunteers for this final demo up here, oh, and not a lot of hands. OK, all right, 123456, and let's go farther back 7 and 8. How about alright, come on up hopefully I counted properly. Come on over. Upon arrival at the stage, go ahead and grab your favorite illuminated number and stand in that same order at the front of the stage if you all could. Welcome to the stage. All right, grab your favorite number, stand in that same order.",
+    "ocr_text": "",
+    "visual_description": "Instructor speaking, no visual aids."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_072",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Sorting",
+    "start_time": 3851.649,
+    "end_time": 3908.409,
+    "transcript": "All right. Good. And 123456. I definitely said 1 through 8. Who is the number 8 then? OK, we need an 8. Come on down. All right. Well, technically we need a 4, but come on down. Yeah. All right, grab the 4 and let me start from this end first if you want to give a quick hello and a little something about you. Uh, hi, my name is Cameron. I'm a first year and I want to study mechanical engineering. Welcome. Hi, I'm Charlotte. I'm also first year and I'm in Canada F. Welcome. Hi, I'm Ella. I'm also a first year and I'm in Thayer. Hi, I'm Precious. I'm also a first year. I'm in the. Hi, I'm Michael. I'm just an Eventbrite guest. Hi, I'm Marie. I'm a first year and I'm in Canada. Welcome. Hi, I'm Rick. I'm a first year and I'm in Holworthy. Nice. I'm Jay. I'm a 1st year in Holworthy and I really like free stuff.",
+    "ocr_text": "",
+    "visual_description": "Three students holding up numbers 6, 5, and 3 respectively."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_073",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Sorting",
+    "start_time": 3908.85,
+    "end_time": 3963.34,
+    "transcript": "OK, well, let's see then, uh, if we can't award all these supermarket, but there's Pez dispensers. The first notice, of course, that all 8 of our volunteers are completely out of order, but in an ideal world we would have the smallest number over here. So go over there, number 0. Wait a minute. 7, take over here. 2, OK, OK, make yourselves look like that. No pez. It's OK. All right, so 72541603. OK, we won't do the introductions again, but now we have a list of numbers completely out of order and wouldn't it be nice if zero were eventually over here? 7 were all the way over there and everything else was sorted from smallest to largest. Well, if you all could go ahead and sort yourselves from smallest to largest, go. Alright, and uh Jayden, what was your algorithm for doing that?",
+    "ocr_text": "",
+    "visual_description": "Students standing on stage with numbers on their chests."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_074",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Sorting",
+    "start_time": 3964.06,
+    "end_time": 4010.83,
+    "transcript": "Um, I I, I, I know that I have the least number because I don't think anybody has the number less than 0, so I put myself at the last bottom line. OK, and I assume Precious, what was your algorithm? I knew I had the largest numbers, so I just had to be at the end of the. OK, fair. So you guys got the easy ones. Uh, number 4. How about You knew 3 was before me and 5 was after me. Nice. And number 4 didn't actually have to move coincidentally, but as for 5 and 3 and 2 and 1 and 6, they probably had to take into account some additional information. Who's to their left, who's to their right, and it just kind of worked, but it didn't look very algorithmic, if you will. It looked very organic and obviously correct, but I'm not sure that same approach would work well if we had not 8 but 80 or 800 or 8000 pieces of data. So let's see if we can't form. I this a little bit.",
+    "ocr_text": "",
+    "visual_description": "A group of students are participating in a quiz or presentation. One student is holding a microphone, likely leading the activity."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_075",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Sorting",
+    "start_time": 4010.909,
+    "end_time": 4062.449,
+    "transcript": "Let me take the mic and if you guys could reset yourselves to those same original positions from 7 on the left to 3 on the right, let me propose a couple of algorithms, canonical ones if you will, but see if maybe we can't formalize step by step what to do. So the first one I'm going to do, given all of these numbers, is just try to select the smallest number. Why? To Jayden's point earlier, I just want to put the smallest number over here. At least that's a problem I can solve. Well defined. It's a nice bite out of the problem. So 7, OK, it's the smallest so far. 2, that's that's smaller. So I'm going to remember that 2 is the now smallest number I've seen, not 5, not 41 is even smaller. So I'm going to remember 1, not 60. That's pretty good, but I'm going to check the whole list. Maybe there's -1 or something like that, but no, 3. So I'm going to remember that 0 was the smallest element I found. Let's select Jaden and put Jayden over here, but Before Precious or anyone else moves, we don't really have room for you.",
+    "ocr_text": "",
+    "visual_description": "The instructor is sitting at a desk in a formal setting, possibly a lecture hall or classroom, and appears to be engaged in a discussion or presentation."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_076",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Sorting",
+    "start_time": 4062.629,
+    "end_time": 4120.877,
+    "transcript": "Like Precious is in the way because if this is an array of 8 values for integers, well, we can't just kind of make room over here because if you think back to last week, we might have some garbage values there or something else is going on. We don't want to change data that doesn't belong to us. So what to do with? Well, maybe precious, maybe you can go over there. So you just take Jade in spots and we'll swap these two values. Accordingly, now though, Jayden is in the right space, which is good because now I can move on to the second problem. What's the next smallest element that's presumably greater than 0? Well, at the moment 2 is the next smallest element, not 5, not 401 is the next smallest element. I'm going to remember that not 6, not 7, not 3. OK, so number 1, if you could go to the right location, but I'm afraid we're going to have to evict number 2 to make room. All right, let's do this again. 0 and 1 are in good shape, so now I think I can ignore them as complete. 5 is the current smallest. No, 4 now is no. 2 now is 67, no, 3, no. OK, so 2 is the next smallest.",
+    "ocr_text": "",
+    "visual_description": "Instructor speaking, no visual aids."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_077",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Sorting",
+    "start_time": 4121.048,
+    "end_time": 4173.136,
+    "transcript": "So let's swap 2 and 5, and now I've solved 3 out of the 8 problems. Let's do this again. 4 is at the moment the smallest, not 5, not 6, not 3 is the now smallest. So let's swap 34 and 3. Which unfortunately is making the 4 problem a little worse, like he belongs there, it would see, but I think we can fix that later. So now half of the list is sorted. 5 is the next smallest, 6 and 74, and then we've got to fix the 4, so 4 goes back there. Now I messed up the 5, but it will come back to that. All right, 67, OK, 5. Let's put you where 6 is, and One more mistake to fix, so 7, OK, 6 and 7 need to swap. And now I've solved 8 problems in the aggregate, so it's complete. Now to be fair, my approach is clearly way slower than your approach, but you all were working in parallel, whereas I was doing it more methodically step by step, and I dare say my algorithm is probably going to be more translatable to code.",
+    "ocr_text": "",
+    "visual_description": "A group of students standing on a stage holding numbers '0', '1', '2', '3', '4', and '5'. The instructor is standing to the right, gesturing towards the students."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_078",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Sorting",
+    "start_time": 4173.145,
+    "end_time": 4231.229,
+    "transcript": "And indeed what I Just acted out is what the world would call selection sort whereby on each iteration, each pass in front of the humans, I was selecting the smallest element I could find. All right, what, how else could I do this though? Let's do something that's maybe a little more organic like your approach where you were actually comparing who was next to you. Go ahead and reset yourselves one final time to this arrangement. 7 on the left, 3 on the right, and let me propose again to walk through the list again and again, but let me focus more narrowly on the problem right in front of me because I felt like I was taking a lot of steps back and forth, back and forth. Maybe we can chip away at some of that wasted time. Let's compare 7 and 2. They're obviously out of order, so let's just immediately swap you two if we could. All right, now 7 and 5, clearly out of order. Let's swap these two. 7 and 4 out of order. Let's swap these 27 and 1 out of order, let's swap these 2.7 and 6 out of order. Let's swap these 2.7 and 0 out of order, swap these two.",
+    "ocr_text": "",
+    "visual_description": "The instructor is speaking to the camera in a classroom setting."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_079",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Sorting",
+    "start_time": 4231.75,
+    "end_time": 4287.622,
+    "transcript": "73 out of order, swap these two. So a lot of work for Precious there, but I've now indeed solved one of the eight problems. Moreover, I don't need to keep addressing the 7 problem because notice that Precious has essentially bubbled her way up to the end of the list. And indeed that's going to be the operative term here. Another algorithm that computer scientists everywhere know is called bubble sort, whereby the goal is to get the biggest elements to just bubble their way up to the. Top of or the end of the list one at a time. Now, am I done? No, clearly not. There's still stuff out of order except for Precious. Indeed, I have solved one of these eight problems and now fine, I'll go back and I'm just going to try this same logic again 2 and 5, good, 5 and 4, nope, swap those 5 and 1, nope, swap those 5 and 6 are good. 6 and 0, nope, swap those 6 and 3, nope, swap those. And I already know that. Precious is where she needs to be, so I think I'm done with the second of 8 problems, and I'll do this a little faster now.",
+    "ocr_text": "",
+    "visual_description": "The instructor is speaking to the camera while another person stands behind him."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_080",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Sorting",
+    "start_time": 4287.832,
+    "end_time": 4339.419,
+    "transcript": "2 and 44 and 1 swap, 4 and 5 are good, 5 and 0 swap, 5 and 3 swap, and now we've solved 3 problems. Let me reset 2 and 1 swap, 2 and 4 are good, 4 and 0 swap, 4 and 3 swap, and now I've solved half of the problems. 4 out of 8, we're almost done. 1 and 2 are good, 2 and 0 swap. 2 and 3 are good, OK, and now we're done with 5 out of the 8 problems, 1 and 0 swap. Uh, 1 and 2 are good. Those are all good. And let me just do a final sanity check. Everything now is sorted, so now I'm done solving all eight of those problems. So you all were wonderful. We need the numbers back, but Kelly has some delightful Pez dispensers for you on the way out if you want to head that way, just leave the numbers on the shelves and a round of applause for our 8 volunteers for helping to act this out. Thank you.",
+    "ocr_text": "",
+    "visual_description": "A group of students standing in a line, each holding a number card."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_081",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Selection Sort",
+    "start_time": 4341.169,
+    "end_time": 4400.29,
+    "transcript": "So let's see if we can't formalize what these volunteers kindly just did with us, starting with the first of those algorithms, thank you, namely selection sort. Let's see if we can't slap some pseudo code on this, thinking of our humans now as more generically in array. So we had the first person at location 0 and we had the last person at location N minus 1. And just for clarity so that you've kind of seen the symbology, this obviously is going to be location N minus 2. Location and minus 3 and so forth until it's sort of you hit the other end that we've already written out. So that's just how we refer to all of our 8 volunteers' locations or in this case 1234567 locations, but in the middle connoting that this can be a much, much larger array. So here's some pseudo code for the first algorithm selection sort for I from 0 ton minus 1. So from the first element to the last element, find the smallest number between. The numbers bracket I and numbers and minus 1.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a blackboard displaying a sequence of red dots labeled as {1}, [2], ..., [n-2], [n-1]. The instructor is holding a phone and appears to be demonstrating something related to the sequence."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_082",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Selection Sort",
+    "start_time": 4400.35,
+    "end_time": 4456.68,
+    "transcript": "In other words, if you're starting I at 0, look at specifically every lighted number between 0 and location N minus 1. When you have found that smallest element, swap it with the number at location I, which starts again at 0. That's how we got, I think, Jaden into place at the very beginning. Then I, by nature of how 4 loops work, gets updated from 0 to 1 so that we do the same thing. Find the smallest number between numbers 1, so the second element through the 8th element because this number is unchanged and is the total number of values, so the end point there is not changing. Once we found the second smallest person, we swap them with. Location I aka 1, and that's how we got the number 1 into position and then the number 2 and then the number 3 and number 4. So this then was selection sort in pseudo code form and that allowed us to actually go through this list again and again and again in order to find the next smallest element.",
+    "ocr_text": "for i from 0 to n-1\nFind the smaller between numbers[n-1] and numbers[i]\nSwap the smaller with numbers[i]",
+    "visual_description": "The instructor is standing in front of a blackboard displaying a piece of source code."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_083",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Selection Sort",
+    "start_time": 4456.759,
+    "end_time": 4513.799,
+    "transcript": "So what was happening a little more methodically if it helps just to map that symbology of the bracket notation in the eyes, if this is where we started with location I and we did everything between location and minus 1. Essentially I traversed this whole list from left to right, literally walking in front of our volunteers looking at each element, and the first element I saw was 7. At the moment that was the smallest element I had found, and who knows, in a different list. Maybe 7 would be the smallest element, so I kind of stored it in a variable in my mind, but I checked then 2 and remembered, no, no, no, 2 is clearly less than now I'm going to remember 2. OK, now I'm going to remember one when I find it, and then I'm going to remember 0 when I find it, and then what I did once I found jade in it with the value of 0, light it up. I moved that location to here and then evicted Precious recall and moved Precious over to that location that we had freed up. Why? Why all this sort of back and forth? Well, you have to assume with an array that you're not entitled to the memory over here.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying a list of numbers [7, 2, 5, 4, 1, 6, 0, 3] and another list [n-1]."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_084",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Selection Sort",
+    "start_time": 4513.913,
+    "end_time": 4564.686,
+    "transcript": "You're not entitled to the memory over here if you've already decided that you have 7 lockers or 8 people, you have to commit to the computer in advance. That's why we put the number typically in the square brackets or the compiler infers from the curly brackets how big the array actually is. All right, and suffice it to say when I went through this again and again and again, I did the same thing over and over. Now you might have thought me sort of dumb for having asked the same. Questions again and again like I was surprised to discover the number 1. I was surprised to discover the number 2, even though on my very first pass I literally looked at all eight of those numbers. But you have to think about what memory I'm actually using now. I certainly could have memorized all of the numbers and where they are, but I proposed that just very simply I was using like a single variable in my brain just to keep track of the then smallest element. And once I'm done finding that and solving that problem, I moved on to do it again and again.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a blackboard with numbers written on it."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_085",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Selection Sort",
+    "start_time": 4564.939,
+    "end_time": 4620.33,
+    "transcript": "But that's going to be a trade off, and this is going to be thematic in the coming weeks whereby, well, sure you could use more memory and I could have been smarter about it and maybe that would have improved or hurt the running time of the algorithm. There's often going to be a trade-off between how much memory or how much time you actually use. So we'll discover that over time. So how fast or slow is selection sort? Well, consider when I had 8 humans on stage, I first went through. Uh, all of them, but how many comparisons did I make? Really, I was doing N minus 1 comparisons because if I've got N people, I've got to compare the smallest number I found against everyone else, and you compare N people left to right, N minus 1 times total. So the first pass I was making, I was asking N minus 1 questions. Is this the smallest? Is this the smallest? Is this the smallest N minus 1 times? Once I solved one problem when we got Jayden into Jayden's right place, then I had one fewer problem, then. One fewer fewer problem and so forth.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing at a podium in front of a large audience, gesturing towards a digital display showing '01243567'. The setting appears to be a lecture hall with wooden paneling and a stage."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_086",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Selection Sort",
+    "start_time": 4620.41,
+    "end_time": 4674.009,
+    "transcript": "So it was like n minus 1 steps plus N minus 2 steps plus N minus 3 steps plus one final step once I got to the final of the eight problems. Now if you remember kind of the cheat sheet at the back of your math books, say growing up, you'll note that this series here can be more simply written as N times N minus 1, all divided by 2. And if you've not seen that before, just take on faith that this is identical to this series of numbers up here. So now we can just kind of multiply this out. So that's technically n2 minus N all divided by 2, which is great if we multiply that out, that's n2d over 2 minus n over 2. We're getting 2 into the weeds. Let's whip out our big O notation now whereby we can wave our hands at the lower order terms, only care about the biggest, most dominant term which mathematically in this expression, if you plug in a really big value of n, which is going to matter more the N squared, the 2, the N, or the 2.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard, pointing at a mathematical equation."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_087",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Selection Sort",
+    "start_time": 4675.31,
+    "end_time": 4734.069,
+    "transcript": "Like the N squared, like the others absolutely contribute to the total value, but if you plug in a really big value, the dominant force is going to be this n squared because that's really going to blow up the total value. So we can say that selection sort when analyzed in this way, ah, it's on the order of n squared steps because I'm doing so many comparisons so many times. So if that's the case, the question then is, Um, what is indeed not just its upper bound but maybe it's lower bound as we'll eventually see. So for selection sort for now, let's stipulate that it's indeed in big O of N2, and that's actually the worst of the algorithms we've seen. Like that's way slower than linear search because at least linear search was big O of N. Selection sort is n square, which of course is n times n, which is and will feel much, much slower than that. So what if though we consider the lower bound of selection sort? All right, maybe it's bad in the worst case, but maybe it's really good when the numbers are mostly sorted. Unfortunately this is the same pseudo code for selection sort.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a wooden backdrop, facing the audience."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_088",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Selection Sort",
+    "start_time": 4734.319,
+    "end_time": 4792.81,
+    "transcript": "We make no allowance for checking the list to make sure it's already sorted, and in fact that's kind of a perverse case to consider for any algorithm. What if the problem's already solved? How's your algorithm going to perform? All of my volunteers, as they kind of almost did accidentally, they started lining up roughly in order. Suppose they literally had been in order from 0 to 7. Well, my stupid algorithm would still have me walking back and forth, back and forth, back and forth. Why? Because the code literally tells me do this this many times and every time I do that find the smallest element. So it's going to be sort of a stupid output because the list is not going to be any change, any any at all changed, but my code is not taking into account in any way. The original order of the numbers. So no matter what, this is to say that if we consider whether the lockers or the humans, the omega notation for this algorithm, even in the best case where the data is already sorted, is crazily also n squad. Now I could certainly change the pseudo code, but selection sort as the world knows it is more of a.",
+    "ocr_text": "for i from 0 to n-1\nFind smallest number between numbers[1] and numbers[n-1]\nFind smallest number with numbers[1]",
+    "visual_description": "The instructor is standing in front of a blackboard with a programming problem written on it."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_089",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Selection Sort",
+    "start_time": 4793.049,
+    "end_time": 4811.7,
+    "transcript": "Constrative algorithm or sort of a quick and dirty one, its running time is going to be in omega of N2, and now we can actually deploy our fader notation because the big O notation is N2d and the omega notation is n2 1 and the same. We can also say that selection sort is in theta of N2, which is not great because that's annoyingly slow.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a blackboard displaying Big O notation functions."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_090",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Bubble Sort",
+    "start_time": 4812.1,
+    "end_time": 4871.6,
+    "transcript": "So maybe the solution here is don't do that. Let's use bubble sort instead. The second algorithm where I just compared everyone side by side again and again. Well, here's some pseudo code for bubbleor, which you can assume applies to the same kind of array from 0 on up to n minus 1. Here's one way to write bubble sort. Repeat the following N times. For I, from 0 ton minus 2, if the number at location I and the number at location I + 1 are out of order, swap them. And there's kind of an elegance to this algorithm and that like that's it and you just assume that when you go through the list, this is how from I from 0 ton minus 2, this is how I was effectively comparing elements 0 and 11 and 22 and 33 and 476 and 7, but notice I didn't say 8, there were 8 total people. Why do we go from 0 ton minus 2 instead of from 0 ton minus 1? Uh, yeah.",
+    "ocr_text": "Repeat n times\nFor i from 0 to n-2\nIf numbers[i] and numbers[i+1] out of order\nSwap them",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying pseudocode for sorting algorithms."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_091",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Bubble Sort",
+    "start_time": 4872.5,
+    "end_time": 4930.379,
+    "transcript": "Yeah You already checked the glass. Not quite. So it's not that we've already checked the last one. I'm saying with this line of code here, we never even go to N minus 1 technically. If we have N minus 345, and it's going to compare against N minus 1 because that's. Exactly, because we're doing this simple arithmetic here, we're checking current location I plus 1. You can think of these as my left and right hand. Left hand is pointing at 0, right hand's pointing at 1. I don't want to do something stupid and have my left hand point at N minus 1 because then my right hand arithmetically when you add 1 is going to point at N, which does not exist. That's beyond the boundary of the array because the array goes from 0 ton minus 1. So just a live. A bit of a safety check there to make sure we don't walk right off the end of the array, but we do this end times because recall that Precious ended up being where 7 needed to be at the very end of the list, but that didn't mean there weren't 77 more problems still to solve 0 through 6.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing on stage in front of a large audience, gesturing towards a digital scoreboard displaying '0124367'. The audience is seated in rows, facing the instructor. On the right side of the stage, there is a large screen displaying a piece of source code."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_092",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Bubble Sort",
+    "start_time": 4930.45,
+    "end_time": 4983.54,
+    "transcript": "So I did it again and I did it again and per its name bubble sort, the biggest element bubbled up first, then the next biggest, then the next biggest, then. biggest that is 7, then 6, then 5, then 4, and we got lucky on some of them, but eventually we finished with 0. So how do we analyze this thing? Well, we could also technically do this N minus 1 times as an aside if you're thinking through that I'm wasting some time because we get one for free. Once we get to solving 7ve problems, you get the 8th 1 for free because that person is obviously where they need to go. So when we had these numbers initially, And we were comparing them with bubbleword again, left hand right hand. It's like treat this as I, this is I plus 1, and we just kept swapping pair wise numbers if in fact they were out of order. So all this is saying is what our humans were doing for us organically. So how do we actually analyze the running time of this? Last time I just kind of spitballed that it was minus 1 steps plus N minus 2 steps.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard with a computer program displayed on it."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_093",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Bubble Sort",
+    "start_time": 4983.62,
+    "end_time": 5040.14,
+    "transcript": "Well, you can actually look at pseudocode sometimes and if it's neatly written, you can actually Infer from the pseudo code how many steps each line is going to take. For instance, how many steps does this first line take? I mean, like literally n minus 1. The answer is right there because it's saying to the computer or to me acting it out, repeat the following N minus 1 times. All right, so that's helpful. How many lines, how many steps does this inner loop induce? Well, you're going from 1 ton minus 2, so that's actually N minus 1, total steps, not n. And then this question here, if numbers bracket 1 and numbers 1 are out of order, it's a single question. It's like our Boolean expression, we'll call it one. I mean, maybe you need to do a bit of more work than that, but it's a constant number of steps. Doesn't matter how big the list is, comparing two numbers is always going to take the same amount of time. And then swapping them, oh, I don't know, it's going to take like 1 or 2 or 3 steps, but constant doesn't matter which the numbers are, takes the same amount of work.",
+    "ocr_text": "Repeat n-1 times\nFor i from 0 to n-2\nIf numbers[i] and numbers[i+1] out of order\nSwap them",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying pseudocode for sorting algorithms."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_094",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Bubble Sort",
+    "start_time": 5040.39,
+    "end_time": 5100.272,
+    "transcript": "So let's stipulate, let me rewind, stipulate that the real things that matter are the loops, these constant number of steps, who really cares? But the loops are what are going to add up as N gets large. So this really then is. If this is the outer loop and this is the inner loop, think about our two dimensional Mario square from week one. We did something on the outside and then something on the inside to get our rows and columns. This is equivalent to N minus 1 times N minus 1. If we do our little foil method N2 minus N minus N + 1 combined like terms, N2 minus 2 N + 1, who cares? This is ultimately going to be on the order of big O of. N squared only because again if you ask yourself when I plug in a really big value for N, which of these is really going to contribute most to the answer, it's obviously going to be n2d again and we can ignore the lower order terms. So this doesn't seem to have made any progress. Like selection sort was on the order of big events was on the order of N2d. Bubble sort, based on this analysis is. Also on the order of N2d, maybe we're getting lucky in the lower bound.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying mathematical expressions."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_095",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Bubble Sort",
+    "start_time": 5100.312,
+    "end_time": 5151.569,
+    "transcript": "So on the upper bound for bubble sort, it's indeed N2d, as was selection sort. But with this pseudo code for bubble sort, unfortunately we, or rather unfortunately we were not doing anything clever to catch that perverse case where maybe the list was already sorted. After all, consider if the list was sorted from 0 to. I was still asking all the same darn questions. Even if I did no work, I was going to repeat that n minus 1 times back and forth, making no swaps, but making all of those comparisons. But here's an enhancement to Bobble So that we can add that selection So didn't really have room for. I can say after one pass of this inner loop walking from left to right, if I made no swaps, quit. So put another way, if I traversed the list from left to right, I make no swaps. I might as well just terminate the algorithm then. Because there's no more work clearly to be done.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying a pseudocode algorithm for sorting numbers."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_096",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Bubble Sort",
+    "start_time": 5151.779,
+    "end_time": 5206.319,
+    "transcript": "All right, so based on that modification, the lower bound of bubble sorts running time would be said to be an omega then of. And because I'm minimally going to need to make one pass through the list. You can't possibly claim that the list is sorted unless you actually check it once. And if there's an elements, you're going to have to look at all of them to make sure that it's in order. But after that, if you've done no work and made no swaps, no reason to traverse the list again and again and again. So a bubble sort can be said to be an omega of N because indeed we can just terminate. After that single pass if we've done no work, we can't say anything about theta because they're not one and the same big O and Omega, but that does seem to have given us some savings. Unfortunately, it really only saves us time when the list is already or mostly sorted, but in the average case and in the worst case, odds are they're both going to perform just as bad on the order of n2.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying Big O notation for different algorithms."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_097",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Bubble Sort",
+    "start_time": 5206.399,
+    "end_time": 5239.62,
+    "transcript": "In fact, let's take a look at a visualization that will make this a little clearer than our own humans and voices might have. Explained here is a bunch of vertical purple bars made by a friend of ours in the real world, and this is an animation that has a bunch of buttons that lets us execute certain algorithms. A small bar represents a small number. A big bar represents a big number, and the goal is to get them from small numbers or small bars to big numbers or big bars left to right. So I'm going to go ahead and click on selection sort initially, and what you'll see from left to right is in pink the current smallest element.",
+    "ocr_text": "",
+    "visual_description": "A bar chart comparing different sorting algorithms."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_098",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Bubble Sort",
+    "start_time": 5239.742,
+    "end_time": 5298.545,
+    "transcript": "That's been discovered, but also in pink, the equivalent of my walking across the stage left to right again and again and again trying to find the next smallest element and you'll see clearly just like when we put Jayden at the far left, the smallest element ended up over here, but it might take some time for Precious, for instance, or number 7 to end up all the way over on the right because with each pass we're really just fixing one problem at a time and there's N problems total, which is giving us on the order of. N squared steps and now the list is getting shorter, so we're at least doing some work that you don't have to keep touching the elements you already sorted with just like I was. So now selection sort is complete. Let's visualize instead bubble sort. So let me re-randomize the array just so we're starting with a random order. Now let's click on bubble sort and you'll see the pink bars work a little differently. It connotes which two numbers are being compared at that moment in time, just like my left hand and right hand going left to right, and you'll see that even though it's not quite as pretty. A selection sort where I was getting at least the smallest elements all the way to the left.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a large screen displaying a bar graph titled 'Comparison Sorting Algorithms'. The instructor is gesturing towards the graph."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_099",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Bubble Sort",
+    "start_time": 5298.795,
+    "end_time": 5351.0,
+    "transcript": "Here we're just fixing pair wise problems, but the biggest elements like Precious's number 7 are indeed bubbling their way up to the top one after the other. But as you can see, and this is where n2d is sort of visual visualizable, we're touching these elements or looking at them so many times again and again. We are making so many darn comparisons. This is taking frustratingly long, and this is only what, a few dozen bars or numbers. You can imagine how long this might take with hundreds, thousands or millions of values. I dare say we're gonna have to do better than bubble sort and Selection sort because we're not stun even yet, just trying to give the satisfaction of getting to the end and now we are, but neither of those algorithms seems incredibly performing because it's still taking us quite a bit of time to actually get to that there solution.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a large screen displaying a bar graph titled 'Comparison Sorting Algorithms'. He is gesturing towards the graph as he explains the topic."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_100",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Recursion",
+    "start_time": 5351.5,
+    "end_time": 5402.1,
+    "transcript": "So how can we actually do better than that? Well, we can try taking a fundamentally different approach, and this is one technique that you might have encountered in math or even in the real world, even if you haven't sort of applied this name to it. Recursion is a technique in mathematics and in programming that allows you to take sort of a fundamentally different approach to a problem and in short, a recursive function is one that's defined in terms of itself. So if you had like F of X equals F of something on the right hand side of a mathematical expression, that would be recursive in that the function is dependent on itself. More practically in the world of programming, a recursive function is a function that calls it. Self. So if you are writing some function in C and in that function you call yourself. You actually have a line of code that says call that same function by the same name, that function is recursive.",
+    "ocr_text": "",
+    "visual_description": "The instructor is speaking to the camera in front of a backdrop with a red and yellow design."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_101",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Recursion",
+    "start_time": 5402.35,
+    "end_time": 5457.939,
+    "transcript": "Now this might feel a little weird because if a function is calling itself, it feels like this is the easiest way to get into an infinite loop because why would it ever stop if the function is calling itself, calling itself, calling itself, calling itself? We're going to have to actually address that kind of problem. But in the real world. We've actually, or rather in this class already, we've actually seen implicitly an example of this, including today as well as in week 0. So here's that algorithm for searching the doors of the lockers and recall that after we did this check at the very top if there are any doors left, returned false, if not, we did these conditions. We said if the numbers behind the middle door returned true because we found it, but things got interesting here. I said if else if the number is less than the middle door, then search the left half. Else if the number is greater than the middle door, then search the right half. Well, at that point in time, you should be asking me or yourself, well, how do I search the left half? How do I search the right half? Well, here you go.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying a flowchart for a binary search algorithm."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_102",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Recursion",
+    "start_time": 5458.069,
+    "end_time": 5511.609,
+    "transcript": "Like on the screen right now is a search algorithm, and even though it says down here search the left half or search the right half, which is like, well, how do I do? That we'll just use the same algorithm again and this is how in terms of my voiceover you end up searching the left half of the left half or the right half of the left half or any such combination. This line here search left half, this line here search right half is representative of a recursive call. This is an algorithm or a function that calls itself, but why does it not induce an infinite loop? Like why is it important that this line and this line are written exactly as they are, so as to avoid this thing just forever searching aimlessly, yeah. We do have this condition at which it stops, but more importantly, what is happening before I make these recursive calls?",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying a flowchart for a binary search algorithm."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_103",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Recursion",
+    "start_time": 5514.54,
+    "end_time": 5570.356,
+    "transcript": "Exactly, I'm recursing, that is calling myself, but I'm handing myself a smaller problem, a smaller problem, a smaller problem. It would be bad if I just handed myself the exact same number of doors and just kept saying search these, search these, search these because you would never make any progress. But just like our volunteers earlier, so long as we did divide and conquer and we searched smaller and smaller numbers of doors, eventually indeed we're going to bottom out and either find the number we're looking for or we're not. So. we're going to call these kinds of conditions that sort of just ask a very obvious question and want an immediate answer base cases. Base cases are generally conditionals that ask a question to which the answer is going to be yes or no right then and there. A recursive case, by contrast, these two down here is when you actually need to do a bit more work to get to your final answer. You call yourself, but with a smaller version of the problem. So we could have in fact in week 0 have written this.",
+    "ocr_text": "If no doors left\nReturn false\nIf number behind middle door\nReturn true\nElse if number < middle door\nSearch left half\nElse if number > middle door\nSearch right half",
+    "visual_description": "A person standing in front of a chalkboard displaying a pseudocode algorithm."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_104",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Recursion",
+    "start_time": 5570.503,
+    "end_time": 5626.471,
+    "transcript": "Sort of similarly, if you go back to in your mind to week 0, we had more of a procedural approach, so to speak. When we were searching the phone book, I proposed that this induced what we called loops on line 8 and line 11, which is literally said go back to line 3, and that was more of a mechanical way of sort of inducing a loop structure. But if I really wanted to be elegant, I could have said, well, you know what, 7 and 8 together really just means search the left half and 10 and 11 together really mean just search the right half. So let's condense these. Pairs of lines into shorter instructions. Search the left half of the book, search the right half of the book. I can then delete two blank lines, and now I have a recursive algorithm for searching a phone book. It's a little less obvious because you have to ask yourself when you get to line 7 or 9, Wait a minute, how do I search the left half or the right half? And that's when you need to realize you start the same algorithm again but with a problem that's half as large. In week 0 we do the procedural approach where we literally tell you what line of code to go to.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying a flowchart or algorithm."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_105",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Recursion",
+    "start_time": 5626.91,
+    "end_time": 5686.435,
+    "transcript": "But today we're offering a different formulation, a recursive approach where it's more implicit what you should do. And we'll see now a couple of examples from the real world, so to speak. So here's a screenshot from Super Mario Brothers 1 on the original Nintendo Entertainment System. Let me go ahead and get rid of some of the distraction, like the ground and the mountains there, and here we have a sort of half pyramid, not unlike that you implemented in Problems set 1, but this is an interesting real world physical structure in that you can define it recursively, like what is a pyramid of height. 4, if you will. Well, just to be a little, a little difficult, a pyramid of height 4 is really just a pyramid of height 3 plus one more row. OK, well, what is a pyramid of height 3? Well, a pyramid of height 3 is really just a pyramid of height 2 plus one more row. Well, what's a pyramid of height 2? Well, a pyramid of height 2 is really just a pyramid of height 1 plus one more row. Well, what's a pyramid of height 1? A single brick on the screen.",
+    "ocr_text": "",
+    "visual_description": "The instructor is pointing at a blue screen displaying a pattern of red squares arranged in a specific order."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_106",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Recursion",
+    "start_time": 5686.759,
+    "end_time": 5746.759,
+    "transcript": "And I sort of changed my tone with that last remark to convey that this could then be our base case whereby I just tell you what the thing is without sort of kicking the can and inviting you to think through what a smaller structure is plus one more row, whereas every other definition I gave you then of a pyramid of some height was defined in terms of that same structure, albeit a smaller version thereof. So we can actually see this in the real world. Let me go ahead and pull up one thing here. I'm going to go to. Give me one sec before I flip over. Here I am on Google.com, if you'd like a little computer science humor here. Uh, if you ever Google search for recursion and hit enter, you'll see uh a joke that computer scientists at Google find funny. Ha ha, 12, lasts. Does anyone see the joke? I did not make a typo, but Google's asking me, did I mean recursion? And if I click on that, I just get the same ha ha page. OK, all right, that didn't go over well.",
+    "ocr_text": "",
+    "visual_description": "Instructor speaking, no visual aids."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_107",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Recursion",
+    "start_time": 5746.83,
+    "end_time": 5761.479,
+    "transcript": "Anyhow, so there are these Easter eggs in the wild everywhere because computer scientists are the ones that implement these things. But let's go ahead and actually implement, for instance, a version of this in code. Let me go back over here in a moment to VS code, and in VS Code,",
+    "ocr_text": "",
+    "visual_description": "A man in a black shirt is sitting at a desk with a laptop in front of him, looking down at the screen with his hand on his chin, appearing to be deep in thought."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_108",
+    "video_id": "week3_algorithms",
+    "chapter_title": "iteration.c",
+    "start_time": 5762.0,
+    "end_time": 5816.814,
+    "transcript": "let me propose that in my terminal window. Let me create one of two final programs. This one's. Going to be called iteration.c just to make clear that this is the iterative that is loop-based version of a program whose purpose in life is to print out a simple Mario pyramid. I'm going to go ahead and include CS50. H at the top as well as standardio.h. I'm not going to need string.h. I don't need any command line arguments today, so this is going to start off with main void. And now I'm going to go ahead and ask a question like, uh, give me a variable called height of type integer and ask the human for the height of this Mario like pyramid. And then let's assume for the moment that I've already implemented a function called Draw whose purpose in life is to draw a pyramid of that height semicolon. So I've abstracted away for the moment the notion of drawing that pyramid. Now let's actually implement Dra, whose purpose in life again is to print out a pyramid akin to the one we saw a moment ago like this here on the screen.",
+    "ocr_text": "#include <cs50.h>\n#include <stdio.h>\n\nint main(void)\n{\n}",
+    "visual_description": "A person standing in front of a laptop displaying a C program."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_109",
+    "video_id": "week3_algorithms",
+    "chapter_title": "iteration.c",
+    "start_time": 5817.024,
+    "end_time": 5870.229,
+    "transcript": "Well, in order to print out a pyramid of a given height, I think I need to say void. Uh, drawn for instance because I'm not going to bother returning a value. I just want this thing to print something on the screen, so void is the return type, but I do want to take as input an integer like the height of the thing I want to print. I can call this argument or parameter anything I want. I'll call it N for number. So how can I print out a pyramid that again looks like this? Well, I'll do this quicker than you might have in problem set 1, but it seems obvious that like on the first row I want 1 brick. On the second row I want 2. On the 3rd I want 3. On the 4th, I want 4. So it's actually a little easier than problem set 1 in that it's sloped in a different direction. So let me go ahead and do exactly this in code. Let me say 4 NI equals 01 less than n, the height, I plus plus. So this is going to be really for each row of the pyramid pyramid.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a large audience, gesturing towards a screen displaying a sequence of numbers (0124567). The audience is seated in rows, facing the instructor. On the left side of the stage, there is a podium with a laptop on top, and on the right side, there is another screen showing a pattern of squares."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_110",
+    "video_id": "week3_algorithms",
+    "chapter_title": "iteration.c",
+    "start_time": 5870.439,
+    "end_time": 5929.97,
+    "transcript": "Let me go ahead now and in an inner loop for in J equals 0, let's do J less than. I plus 1 for reasons we'll see in a moment and then J++ and then inside of this loop, let's just print out a single hash, no new line, but at the end of the row, let's print out a single new line to move the cursor to the next line. Now why am I doing this? Well, this represents for each column of pyramid, and if you think about it on the first row, which is row 0, I actually want to print not zero bricks but one brick. That's why I want to go ahead here and go from 0 to I plus 1, because if I is +01 + 1 is 1, so my inner loop is going to go from 0 to 1, which is going to give me 1 brick. It's a little annoying to think about the math, but this just makes sure that I'm actually getting bricks in the order I want them. And then it's going to give me 2 bricks and then 3 and then 4, and between each of those rows it's going to print a new line. So let's go ahead and do make iteration to compile this code.",
+    "ocr_text": "void draw(int n)\n{\n    // For each row of pyramid\n    for (int i = 0; i < n; i++)\n    {\n        // For each column of pyramid\n        for (int j = 0; j < i + 1; j++)\n        {\n            printf(\"#\");\n        }\n        printf(\"\\n\");\n    }\n}",
+    "visual_description": "The instructor is explaining a C function that draws a pyramid pattern."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_111",
+    "video_id": "week3_algorithms",
+    "chapter_title": "iteration.c",
+    "start_time": 5930.069,
+    "end_time": 5984.0,
+    "transcript": "Ah, I messed up. Why do I have a mistake online? 8 of this code. Let me hide my terminal and scroll back up. It seems clang. My compiler does not like my draw function. Yeah. Yeah, I forgot the prototype. So this is the one and only time where it seems reasonable to copy paste. Let's grab the prototype of that function up here and go ahead and teach the compiler from the get-go what this function is going to look like, even though I'm not defining it now until line 13 onward. All right, let's go ahead and make iteration again. Ah, iteration enter. Let's do a height of say 4 and voila. Now I've got that there pyramid. So I did it a little quickly and it's certainly to be expected if it took you hours on problems set one to get the other type of pyramid printed, but the point for today is really to demonstrate how we can print a pyramid like this using indeed what I'd call iteration. Iteration just means using loops to solve some problem,",
+    "ocr_text": "#include <cs50.h>\n#include <stdio.h>\n\nvoid draw(int n);\n\nint main(void)\n{\n    int height = get_int(\"Height: \");\n    draw(height);\n}\n\nvoid draw(int n)\n{\n    // For each row of pyramid\n    for (int i = 0; i < n; i++)\n    {\n        // For each column of pyramid",
+    "visual_description": "A person standing in front of a computer screen displaying a C program."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_112",
+    "video_id": "week3_algorithms",
+    "chapter_title": "recursion.c",
+    "start_time": 5985.37,
+    "end_time": 6043.47,
+    "transcript": "but we can. Alternatively use recursion by reimplementing our draw function in a way that's defined in terms of itself. So let me go into my code here and I'm actually going to leave the prototype the same. I'm going to leave main the same, but what I'm going to go ahead and do is delete all of this iterative code that's doing things very procedurally, step by step by step with loops, and I'm instead going to do something like this. Well, if I want to print a pyramid of height N. What did I say earlier? Well, a pyramid of height N is really just a pyramid of height N minus 1 plus 1 more row. So how do I implement in code that idea? Well, let me go back in code here and say, well, if a pyramid of height N first requires drawing a pyramid of height N minus 1, I think I can just write this, which is kind of crazy to look at, but because you're calling yourself in yourself, but let's see where this takes us. Once I have drawn a pyramid of height and minus 1.",
+    "ocr_text": "",
+    "visual_description": "A person is sitting in front of a laptop with a code editor open displaying C code."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_113",
+    "video_id": "week3_algorithms",
+    "chapter_title": "recursion.c",
+    "start_time": 6043.99,
+    "end_time": 6103.209,
+    "transcript": "That is a height 3 for instance. What remains for me to do is to myself print one more row. And so to print one more row, I think I can do that really easily with fewer loops. I can do 4 in, I equals 01 less than N I plus plus, and then very simply in this loop I can. Print out a single hash one at a time. At the end of this loop, I can print out a new line, but no more nesting of loops. What I've done is print one more row, and here I've done print a pyramid of height and minus 1. I'm not quite done yet, but I think this is consistent with my verbal definition that a pyramid of height 3 is a pyramid of a pyramid of height 4 is a pyramid of height 3, which I can implement per line 16. Just draw me a pyramid of height and minus 1, and then I myself will take the trouble to print the 4th and final row. But something's missing in this code.",
+    "ocr_text": "void draw(int n)\n{\n    // Print one more row\n    for (int i = 0; i < n; i++)\n    {\n        printf(\"#\\n\");\n    }\n}",
+    "visual_description": "A person standing in front of a computer screen displaying a C program."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_114",
+    "video_id": "week3_algorithms",
+    "chapter_title": "recursion.c",
+    "start_time": 6103.58,
+    "end_time": 6161.66,
+    "transcript": "Let me go ahead and try running it. Let's see what happens. Make, oh darn it. I meant to call this something else, so I'm going to do this. I'm going to close this version here. I'm going to rename iteration.c to recursion.c to make clear that this version is completely different. Let me now go ahead and make the recursion version and huh, Klang is noticing that I have screwed up on line 14, it says error. All paths through this function will call itself, and Klang doesn't even want to let me compile this code because that would mean literally just forever. Loop effectively by calling yourself. So what am I missing in my code here if I open up what we're now calling recursion.c. In my editor What's missing here over here? Yeah, I'm missing a base case, and I can express this in a few different ways, but I would propose that before I do any drawing of anything at all, let's just ask ourselves if there is anything to draw. So how about if N equals equals 0?",
+    "ocr_text": "",
+    "visual_description": "Instructor speaking, no visual aids."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_115",
+    "video_id": "week3_algorithms",
+    "chapter_title": "recursion.c",
+    "start_time": 6161.819,
+    "end_time": 6217.432,
+    "transcript": "Well then don't do anything, just return. You don't return a value when your return value is void, it means you don't return anything, so you just return period or return semicolon. Or just to be super safe, I could actually do something like this, which is arguably better practice just in case I get into this perverse scenario where someone hands me a negative number, I want to be able to handle that and not print anything either. So just to be safe, I might say less than or equal to 0. I'm not doing one because if I did do one, then I would want to at least myself print out one brick, which is fine, but I have to like change all of my code. Little bit, so I think it's safer if my base case is just if n is less than or equal to 0, you're done. Don't do anything. And this then ensures that even though thereafter, I keep calling draw again and again and again and the problem's getting smaller and smaller from 4 to 3 to 2 to 1, as soon as I hit 0, the function will finally return.",
+    "ocr_text": "void draw(int n)\n{\n    if (n <= 1)\n    {\n        return;\n    }\n\n    // Print a pyramid of height n - 1\n    draw(n - 1);\n\n    // Print one more row\n    for (int i = 0; i < n; i++)\n    {\n        printf(\"#\");\n    }\n}",
+    "visual_description": "The instructor is explaining a recursive function in C programming language."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_116",
+    "video_id": "week3_algorithms",
+    "chapter_title": "recursion.c",
+    "start_time": 6218.339,
+    "end_time": 6277.58,
+    "transcript": "So let's go ahead and open up my terminal, rerun make recursion to make this version did compile this time recursion enter. Let's type in 4 cross my fingers, and this too prints the exact same thing. And even though it doesn't look like fewer lines of code, I would offer that there's an elegance to what I've just done, whereas with the iterative version with all the loops, it was very clunky, like step by step, just print this and print that and have a nested loop inside of another. But with this, especially if we distill it into its essence. By getting rid of my comments like this and frankly I can get rid of the unnecessary curly braces only because for single lines in conditionals you don't need them. Like this is arguably like a very beautiful implementation of drawing Mario's pyramid even though it's calling itself and arguably because it is calling itself. Questions then on this idea of recursion or this implementation of Mario, yeah. Call Good question.",
+    "ocr_text": "",
+    "visual_description": "A computer screen displaying a C program with a man in a black shirt standing next to it."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_117",
+    "video_id": "week3_algorithms",
+    "chapter_title": "recursion.c",
+    "start_time": 6277.58,
+    "end_time": 6331.339,
+    "transcript": "Are there any scope issues involved? Short answer No. However, the current value of I, for instance, will not be visible to the next time the function is called. It will have its own copy of I if that's what you mean. And we'll next week talk in more detail about what's going on here. And in fact, I probably can't break this in class very easily, but it turns out if I use a very large version for heights, let's just hit a lot of zeros and see what happens. That was too many. Let's see what happens. That's also too many. Let's see what happens there. That's the first time at least I and class have encountered this error. You might have encountered this weird bug in office hours or in your problem set, and that's fine if you did. We'll talk about what this means next week too, but this is bad. Like this clearly hints at a problem in my code. However, the iterative version of this program would not have that same error. So this relates to something involving memory because it turns out as a little teaser for next week.",
+    "ocr_text": "void draw(int n)\n{\n    if (n <= 0)\n        return;\n    draw(n - 1);\n}\n\n$ ./recursion\nHeight: 1000000000000\nHeight: 10000000000",
+    "visual_description": "The instructor is standing in front of a computer screen displaying a C program for drawing a pattern using recursion."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_118",
+    "video_id": "week3_algorithms",
+    "chapter_title": "recursion.c",
+    "start_time": 6331.485,
+    "end_time": 6346.0,
+    "transcript": "Each time I call Draw, I'm using a little more memory, a little more memory, a little more memory, a little more memory, and my computer only has so much memory. This program in its current form is using too much memory. There are workarounds to this, but that is a trade off to the elegance we're gaining in this solution.",
+    "ocr_text": "",
+    "visual_description": ""
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_119",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Merge Sort",
+    "start_time": 6346.636,
+    "end_time": 6404.345,
+    "transcript": "So what's the point of all this and how do we get sidetracked by Mario? There's another sorting algorithm, the 3rd and final one that we'll consider today that actually Is recursion to solve the problem not only elegantly arguably, but also way faster somehow than bubble sort and selection sort. And in essence it does so by making far fewer comparisons and wasting a lot less work. It doesn't keep comparing the same numbers again and again. Here in its essence is the pseudo code for merge sort. Sort the left half of the numbers. So the right half of the numbers, then merge the sorted halves, and this is kind of a weird implementation of an algorithm because I'm not really telling you anything. It seems like you're asking me how do I sort numbers, and I say, we'll sort the left half, sort the right half. It's like someone being difficult and yet implicit in this third line is apparently some magic, this notion of merging halves that are somehow already. is actually going to yield a successful result. As an aside, we're actually going to need one base case here too.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying instructions for sorting numbers."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_120",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Merge Sort",
+    "start_time": 6404.384,
+    "end_time": 6461.879,
+    "transcript": "So if you're only given one number, you might as well quit right away because there's nothing to do. So we'll toss that in there as well. And base cases are often for 0 or 1 or some small num sized problem. In this case it's a little easier to express it as one because if you have one element, it's indeed already sorted. So what does it mean to merge two sorted halves? Well, let's actually consider this. I'm going to reuse some of these same numbers here. I'm going to put my 1, my 3, my 4, and my 6 on the left, and these together represent a list that is indeed sorted of size 4. And then I'm going to put 4 other numbers on the right there that are similarly sorted. As well, and by merging these two lists, I mean start at the left end of this list, start at the left end of this list, and just decide one step at a time which number is the next smallest, and then I'm going to put it on the top shelf to make clear what is sorted. So if my left hand's pointing at this list, my right hand's pointing at there, which hand is obviously pointing to the smaller element, left or right.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a metal frame with numbers '57' displayed on it."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_121",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Merge Sort",
+    "start_time": 6462.759,
+    "end_time": 6516.12,
+    "transcript": "Like the right, so I'm going to grab this and I'm going to use a little more space up top here and put the 0 in place and then I'm going to point to the next element there. So my left hand has not moved yet. It's still pointing at the 1. My right hand is pointing at the 2, which number comes next clearly? Left, so I'm going to grab the 1 and put it up there and update where my left hand is pointing. So now I'm pointing at the 3 here and the 2 there. What comes next? Obviously the 2. What comes next? Obviously the 3. What comes next, obviously the 4. What comes next, obviously the 5, but notice my hands are not going back and forth, back and forth, back and forth like any of the algorithms thus far. I'm just taking baby steps, moving them only to the right, effectively pointing at for a final time each number once and only once. What comes next, 6, and now my left hand is done. What comes last, the number 7. What I just did is what I mean by merge the sorted halves.",
+    "ocr_text": "",
+    "visual_description": "A person is pointing at a digital display showing '01.23' and '48 57'. The background appears to be a wooden panel with intricate designs."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_122",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Merge Sort",
+    "start_time": 6516.16,
+    "end_time": 6572.64,
+    "transcript": "If you can somehow get into a scenario where you've got a small list sorted and another small list sorted, it's super easy now to merge them together using that left right approach, which I'll claim only takes end steps. Why? Because every time I asked you a question, I was taking one. Out of the problem, there's 8 bytes total. I asked you 8 questions or I would have if I verbalized them all. So it's N steps total to merge lists of that size. So what then is merge sort? Mergesort is really all three of these steps together, only one of which we've acted out, 2 of which are sort of cyclical in nature. They're recursive by design. So what does this mean? Well, let's start with this list of eight numbers, which is clearly out of order 63, 4152, 70 and let's apply mergesor to this set of numbers and I'll do it digitally here because it'll take forever to keep moving the numbers up and down physically. So let's move it to the top just to give ourselves a little bit more room and let me propose that we apply mergesort.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing at the front of a lecture hall, gesturing towards a computer screen displaying a C program. The audience is seated in rows, facing the instructor."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_123",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Merge Sort",
+    "start_time": 6572.77,
+    "end_time": 6632.33,
+    "transcript": "What was the very first step in mergesort, at least that we highlighted, the juicy steps. What's the first step in mergesor? Sort the left half, yeah. And then the second step was going to be sort the right half and then the third step was going to be merge the sorted halves. So let's see what this means by actually acting it out on these numbers. So here's my 8 numbers. Let's go ahead and sort the left half. Well, the left half is obviously going to be the 4 numbers on the left, and I'm just going to pull them out just to draw our attention to them over here. Now I have a list of size 4, and the goal is to sort the left half. How do I sort a list of size 4? Uh, be what was yes, but just be more pedantic. Like how do I sort any list using merge sort? Sort the left half. So let's do just that. So of the list of size 4, how do I sort this? Well, I'm going to sort the left half. How do I sort a list of size 2? Sort the left half, right, well, I'm just gonna write the 6 here. How do I sort a list of size 1?",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying numbers."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_124",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Merge Sort",
+    "start_time": 6633.77,
+    "end_time": 6691.52,
+    "transcript": "I just don't. I'm done. That was the so-called base case where I just said return, like I'm done sorting the list. OK, so here I here's the story recap. So the left half, sort the left half, sort the left half, and I just finished sorting this. So what comes next? Sort the right half, which is this, and now I've sorted the left half of the left half of the left half, which is a big mouthful, but what do I do as a third and final step when sorting this list of size 2. Merge them. This part we know how to do. I point left and right, and I now take the smallest element first, which is the 3. Then I take the 6 and now this list of size 2 is sorted. So if you remind in your mind's eye what step are we on, well, we have now sorted the left half of the left half. So what comes after the left half is sorted? We sort the right half. So we're sort of rewinding in time, but that's OK. I'm keeping track of the steps in my mind.",
+    "ocr_text": "",
+    "visual_description": "The instructor is pointing to the memory address 0x123 on the chalkboard."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_125",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Merge Sort",
+    "start_time": 6691.729,
+    "end_time": 6750.149,
+    "transcript": "I want to now sort this list of size 2. How do you sort a list of size 2? Well, you divide it into a list of size 1. How do you sort this? You're done. You then take the other right half and you sort it. Done. Now you merge the two sorted halves. So I point at the 4 and the 1, obviously the one comes first, then the 4. Now I have sorted the right half of the uh the right half of the left half of the original numbers. What's the next step now that I have the left and right halves of this list of 4 sorted? Merge those, so same idea but fewer elements. I'm pointing at the 3 and the 1. Obviously the 1 comes now I'm pointing at the 3 and the 4. Obviously the 3 comes next, pointing at the 6 and the 4, the 4 comes next, and now the 6 comes last. Now I have sorted the left half and it's intentional that 1346 is the original arrangement of the lighted numbers I had on the shelves a moment ago. All right, it's a long story it seems, but what comes after you sorting the left half of the original list? You sort the right half.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a blackboard displaying numbers."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_126",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Merge Sort",
+    "start_time": 6750.189,
+    "end_time": 6806.81,
+    "transcript": "So let's put some, uh, put those numbers over here. How do I sort a list of size 4? Well, you sort the left half. How do you sort this thing of size 2? You sort the left half, you sort the right half, and now you merge those together. How do I now sort the right half of the right half? Well, I sort the left half, I sort the right half, and then I merge those together. Now, I have sorted the left half and the right half of the right half of the original elements. What's next? The merging, 025. And 7. Now we're exactly where we were originally with the lighted numbers. I've got 1346, the left half sorted, 02 57. The right half sorted. What's the third and final step? Merge those two halves, of course, 0123456. And 7 And hopefully even though there's a lot of words that come out of my mouth as acting this out, there wasn't a lot of back and forth.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying numbers."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_127",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Merge Sort",
+    "start_time": 6806.85,
+    "end_time": 6860.247,
+    "transcript": "Like I definitely wasn't like walking back and forth physically and I also wasn't comparing the same numbers again and again. I was doing sort of different work at different conceptual levels, but that was like only what, like 3 levels total. It wasn't N levels on the board visually. So where does this get us with merge sort? Well, with mergesort, it would seem that we have an algorithm that I claim is doing a lot less work. The catch. Is that merge sort requires twice as much space just as we saw when I needed two shelves in order to merge those two lists. So how much less work is actually going to be possible? Well, let's consider sort of the analysis of the original list and how we might describe its its running time in terms of this big O notation. Hopefully it's not going to be as bad as n2d ultimately. So here are some like bread crumbs that if I hadn't kept updating the screen and deleting numbers once we move them around, here's sort of like traces of every.",
+    "ocr_text": "",
+    "visual_description": "The instructor is demonstrating something using his hands in front of a laptop."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_128",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Merge Sort",
+    "start_time": 6860.333,
+    "end_time": 6919.201,
+    "transcript": "Bit of work that we did, we started up here, we did the left half, the left half of the left half, the right half of the right half, and then everything else in between, and you'll see that essentially I took a list of size 8 and I did 3 different passes through it at this conceptual level, at this conceptual level, and at this one. And each time I did that I had to merge elements together and if you kind of think about it here, I pointed at 4 elements here and 4 elements here and in total I pointed at 8 elements. So there was end steps here for merging and if you. Trust me, I'll claim that on this level conceptually there were also 8 steps. I wasn't merging lists of size 4, but I was merging 2 lists of size 2 over here and 2 more lists of size 2 over there. So if you add those up, those are in total steps or or merges if you will. And then down here this was kind of silly. I was, but I was merging ultimately 8 single lists altogether into the higher level of of conceptually. So from a list of size 8 we sort of had 3 levels of work.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a chalkboard displaying numbers."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_129",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Merge Sort",
+    "start_time": 6920.06,
+    "end_time": 6979.069,
+    "transcript": "And on each level we did n steps, the merging. So whereas 3? Well, it turns out if you have 8 elements up here, the relationship between 8 and 3 is actually something formulaic, and we can describe it as log base 2 of n. Why? Because if n is 8, if you don't mind doing some logarithms here, logba 2 of 8 is the same thing as logbase 2 of 23 power. The log 2 and the 2 cancel itself out, which gives you exactly the number 3. That I sort of visualized with those traces on the screen, which is to say, irrespective of the specific value of N, the big O running time of merge sort is apparently not n squared, but it's log n times n or more conventionally n times log n. Because you're doing things, log n times technically based 2, but we don't care about that generally for big O notation. And indeed in big O notation we would say that merge sort is on the order of N log N. That's its big O running time sort of at the upper bound.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing in front of a blackboard with the number '3' written on it."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_130",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Merge Sort",
+    "start_time": 6979.109,
+    "end_time": 7029.979,
+    "transcript": "What about the lower order bound? Well, there's no clever optimization in our current implementation as there was for bubble sort, and so it turns out the lower bound would be in omega of N log N and in theta, therefore, Of and log in as well because Big O and Omega are in fact in this case one and the same. And if we actually go back to our visualization from earlier, give me just a moment to pull that up here in our earlier implementation or an earlier demonstration of these algorithms, we had a side by side comparison of all of the comparisons, but here if I go ahead and randomize it and click Merge sort, you'll see a very different and clearly faster algorithm, even though the computer speed has not changed. But it's touching these elements so many fewer times it's wasting a lot less time because of this cleverness where it's instead dividing and conquering the problem into smaller and smaller and smaller pieces.",
+    "ocr_text": "",
+    "visual_description": "Instructor speaking, no visual aids."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_131",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Merge Sort",
+    "start_time": 7030.1,
+    "end_time": 7043.0,
+    "transcript": "And to give this a final flourish, since that was, yes, faster, but not necessarily obviously faster than other things that we've done, how might we actually compare these things side by side by side? Well, in our final moments together,",
+    "ocr_text": "",
+    "visual_description": "Instructor speaking, no visual aids."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_132",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Sort Race",
+    "start_time": 7043.339,
+    "end_time": 7068.959,
+    "transcript": "let's go ahead and. Amatically and for no real reason, just dim the lights so that I'll hit play on a visualization that at the top is going to show you selection sort with a bunch of random data. On the bottom it's going to show you show you bubble sort with a bunch of random data and in the middle is going to show you merge sort and the takeaway ultimately for today is the appreciable feel of difference between big O of N2d and now the big O of N log N.",
+    "ocr_text": "",
+    "visual_description": "Instructor speaking, no visual aids."
+  },
+  {
+    "chunk_id": "cs50_week3_algorithms_133",
+    "video_id": "week3_algorithms",
+    "chapter_title": "Sort Race",
+    "start_time": 7135.779,
+    "end_time": 7140.18,
+    "transcript": "All right, the music just makes sorting more fun, but that's it for today. We will see you next time.",
+    "ocr_text": "",
+    "visual_description": "A man in a black shirt is clapping his hands in front of a digital clock displaying numbers."
+  }
+]

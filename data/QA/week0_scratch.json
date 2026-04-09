@@ -1,0 +1,189 @@
+[
+    {
+        "question_id": "week1_12345",
+        "question": "Based on the transcript and visual, what is the primary focus of the CS50 course at Harvard University?",
+        "target_answer": "The primary focus of the CS50 course at Harvard University is to introduce students to the intellectual enterprises of computer science and the arts of programming.",
+        "question_type": "concept_understanding",
+        "ground_truth_video_id": "week0_scratch",
+        "ground_truth_window": [
+            123.959,
+            144.0
+        ]
+    },
+    {
+        "question_id": "week1_67890",
+        "question": "What is the significance of the light bulbs spelling out a word in the context of the CS50 course?",
+        "target_answer": "The light bulbs spelling out a word signify that by the end of the course, students will understand and be able to solve various problems using the concepts taught in the course.",
+        "question_type": "visual_reasoning",
+        "ground_truth_video_id": "week0_scratch",
+        "ground_truth_window": [
+            123.959,
+            144.0
+        ]
+    },
+    {
+        "question_id": "ai_12345",
+        "question": "Based on the transcript, how does the instructor describe the impact of AI on programming? In what ways does AI help programmers according to the instructor?",
+        "target_answer": "The instructor describes the impact of AI on programming as it being a game changer for the past several years and it's only going to get to be the case all the more. According to the instructor, AI helps programmers by allowing them to use AI in any number of forms to solve problems, find bugs or mistakes in code, and even tell the AI what additional features they want to add to their software.",
+        "question_type": "concept_understanding",
+        "ground_truth_video_id": "week0_scratch",
+        "ground_truth_window": [
+            144.289,
+            203.179
+        ]
+    },
+    {
+        "question_id": "ai_67890",
+        "question": "What does the instructor mention as the main limitation of human programmers according to the transcript? How does this limitation relate to the visual context where the instructor is not using any visual aids?",
+        "target_answer": "The instructor mentions that humans have long been the bottleneck in programming as there are only so many hours in the day and a limited number of people on a team or in a company. This limitation relates to the visual context as it implies that even without the aid of visual tools, human programmers are constrained by time and manpower.",
+        "question_type": "visual_reasoning",
+        "ground_truth_video_id": "week0_scratch",
+        "ground_truth_window": [
+            144.289,
+            203.179
+        ]
+    },
+    {
+        "question_id": "cs50x_12345",
+        "question": "Based on the transcript, what is the primary goal of CS50? In the visual, identify the programming language that is being demonstrated.",
+        "target_answer": "The primary goal of CS50 is to teach students how to think and how to use various tools to take input and produce correct output. In the visual, the programming language being demonstrated is Scratch.",
+        "question_type": "concept_understanding | visual_reasoning",
+        "ground_truth_video_id": "week0_scratch",
+        "ground_truth_window": [
+            203.259,
+            259.269
+        ]
+    },
+    {
+        "question_id": "video_1_12345",
+        "question": "Based on the transcript, the speaker mentions learning multiple methods for taking derivatives and integrals in college. In the visual, what symbol is prominently displayed on the computer screen, which could be related to mathematical concepts?",
+        "target_answer": "The delta symbol (∆) is prominently displayed on the computer screen.",
+        "question_type": "visual_reasoning",
+        "ground_truth_video_id": "week0_scratch",
+        "ground_truth_window": [
+            259.35,
+            318.63
+        ]
+    },
+    {
+        "question_id": "video_1_67890",
+        "question": "According to the transcript, the speaker compares Visual Studio Code to other text editors like Notepad and TextEdit. In the visual, what is the yellow object floating in front of the computer screen?",
+        "target_answer": "A large yellow rubber duck is floating in front of the computer screen.",
+        "question_type": "concept_understanding",
+        "ground_truth_video_id": "week0_scratch",
+        "ground_truth_window": [
+            259.35,
+            318.63
+        ]
+    },
+    {
+        "question_id": "video_chunk_12345",
+        "question": "Based on the transcript, what programming language is the instructor using to create a chatbot? Additionally, in the visual, what object can be seen on the instructor's desk alongside the computer?",
+        "target_answer": "Python, a large yellow rubber duck",
+        "question_type": "visual_reasoning",
+        "ground_truth_video_id": "week0_scratch",
+        "ground_truth_window": [
+            318.76,
+            377.25
+        ]
+    },
+    {
+        "question_id": "video_chunk_67890",
+        "question": "According to the transcript, where does the instructor write their code and where does the instructor run their code?",
+        "target_answer": "At the top of the file in VS Code and at the bottom of the file or terminal window in VS Code",
+        "question_type": "concept_understanding",
+        "ground_truth_video_id": "week0_scratch",
+        "ground_truth_window": [
+            318.76,
+            377.25
+        ]
+    },
+    {
+        "question_id": "video_1_12345",
+        "question": "Based on the provided transcript and visual, explain what the code is doing and how it relates to the OpenAI API and the client program.",
+        "target_answer": "The code is importing the OpenAI module, creating an instance of the OpenAI client, and then using the client to send a request to the OpenAI API. Specifically, the code is asking the API to perform part-of-speech tagging on the input sentence 'In one sentence, what is CS 50?'",
+        "question_type": "code_explanation",
+        "ground_truth_video_id": "week0_scratch",
+        "ground_truth_window": [
+            377.369,
+            432.22
+        ]
+    },
+    {
+        "question_id": "video_1_67890",
+        "question": "In the visual, what is the person doing and how does it relate to the code shown in the transcript?",
+        "target_answer": "The person in the visual is standing in front of a computer screen displaying code and a terminal window. This suggests that they are likely writing or executing code related to the OpenAI API, as shown in the transcript where they are importing the OpenAI module and creating a client to interact with the API.",
+        "question_type": "visual_reasoning",
+        "ground_truth_video_id": "week0_scratch",
+        "ground_truth_window": [
+            377.369,
+            432.22
+        ]
+    },
+    {
+        "question_id": "video_1638420520_12345",
+        "question": "Based on the transcript, what command is used to create a response using the 'gpt-5' model, and how is the response printed out in the code?",
+        "target_answer": "The 'create' method is used to create a response with the 'gpt-5' model, and the 'print' statement is used to print out the response.",
+        "question_type": "code_explanation",
+        "ground_truth_video_id": "week0_scratch",
+        "ground_truth_window": [
+            432.35,
+            489.75
+        ]
+    },
+    {
+        "question_id": "video_1638420520_67890",
+        "question": "In the visual, what appears to be the main focus of the person in the video? How does this relate to the code shown in the terminal window?",
+        "target_answer": "The main focus of the person in the visual appears to be running code in the terminal window. This relates to the code shown in the terminal window, which implements a chatbot that uses the 'gpt-5' model to answer a specific question.",
+        "question_type": "visual_reasoning",
+        "ground_truth_video_id": "week0_scratch",
+        "ground_truth_window": [
+            432.35,
+            489.75
+        ]
+    },
+    {
+        "question_id": "transcript_ocr_1",
+        "question": "Based on the transcript and visual, explain how the code is being used to dynamically ask the user for a question prompt and store it in a variable called 'prompt'.",
+        "target_answer": "The code uses the 'input()' function to ask the user for a question prompt, which is then stored in a variable called 'prompt'. This allows the program to be more dynamic and adaptable to different user inputs.",
+        "question_type": "code_explanation",
+        "ground_truth_video_id": "week0_scratch",
+        "ground_truth_window": [
+            489.79,
+            543.63
+        ]
+    },
+    {
+        "question_id": "transcript_ocr_2",
+        "question": "In the given transcript and visual, why is it important to use a variable to store the user's inputted question prompt?",
+        "target_answer": "Using a variable to store the user's inputted question prompt allows the program to easily access and utilize the prompt later in the code, making the program more flexible and efficient.",
+        "question_type": "concept_understanding",
+        "ground_truth_video_id": "week0_scratch",
+        "ground_truth_window": [
+            489.79,
+            543.63
+        ]
+    },
+    {
+        "question_id": "chat_12345",
+        "question": "Based on the transcript and visual, explain how the Python script interacts with OpenAI's API to generate responses to user prompts.",
+        "target_answer": "The Python script uses the OpenAI library to create an OpenAI client. It then prompts the user for input, which is passed to the OpenAI client's create() method along with the desired model (gpt-5). The generated response is then printed to the console.",
+        "question_type": "code_explanation",
+        "ground_truth_video_id": "week0_scratch",
+        "ground_truth_window": [
+            543.88,
+            603.179
+        ]
+    },
+    {
+        "question_id": "chat_67890",
+        "question": "In the video, the presenter demonstrates using the API to ask questions like 'what is CS 50' and 'which is better, Harvard or Stanford?' Based on the visual, what might be a potential reason for the slight variations in the AI's responses?",
+        "target_answer": "The slight variations in the AI's responses could be due to the underlying machine learning model generating slightly different outputs each time, even for the same input prompt.",
+        "question_type": "visual_reasoning",
+        "ground_truth_video_id": "week0_scratch",
+        "ground_truth_window": [
+            543.88,
+            603.179
+        ]
+    }
+]

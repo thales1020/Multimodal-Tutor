@@ -1,0 +1,102 @@
+[
+  {
+    "chunk_id": "cs50_week0_scratch_001",
+    "video_id": "week0_scratch",
+    "chapter_title": "Introduction",
+    "start_time": 0.0,
+    "end_time": 123.0,
+    "transcript": "",
+    "ocr_text": "",
+    "visual_description": "A group of students standing on a stage, each holding up a card with numbers on them."
+  },
+  {
+    "chunk_id": "cs50_week0_scratch_002",
+    "video_id": "week0_scratch",
+    "chapter_title": "This is CS50",
+    "start_time": 123.959,
+    "end_time": 144.0,
+    "transcript": "All right, this is. OK. This is CS 50, Harvard University's introduction to the intellectual Enterprises of Computer Science and the arts of programming. My name is David Malan, and this is week er, and by the end of today you'll know not only what these light bulbs here spell, but so much more.",
+    "ocr_text": "",
+    "visual_description": ""
+  },
+  {
+    "chunk_id": "cs50_week0_scratch_003",
+    "video_id": "week0_scratch",
+    "chapter_title": "Artificial Intelligence",
+    "start_time": 144.289,
+    "end_time": 203.179,
+    "transcript": "But why don't we start first with the, uh, the elephant or the elephant in the room, that is artificial intelligence, which is seemingly everywhere over the past few years, and it's been said that it's going to change programming, and that's absolutely the case. It's been that way actually for the past several years. is only going to get to be the case all the more, but this is an incredibly exciting time. This is actually a good thing, I do think insofar as now using AI in any number of forms, you can ask the computer to help solve some problem for you. You can find some bug or mistake in your code. Better still, increasingly you can tell the AI what additional features you want to add to your software, and this is huge because even in the industry for years, humans have been programming in some form for decades, building products and solutions to problems. The is that you and I as humans have long been the bottleneck. There's only so many hours in the day. There's only so many people on your team or in your company, and there's so many more bugs that you want to solve and so many more features that you want to implement. But at the same time you still really need to understand the fundamentals.",
+    "ocr_text": "",
+    "visual_description": "Instructor speaking, no visual aids."
+  },
+  {
+    "chunk_id": "cs50_week0_scratch_004",
+    "video_id": "week0_scratch",
+    "chapter_title": "Artificial Intelligence",
+    "start_time": 203.259,
+    "end_time": 259.269,
+    "transcript": "And indeed a class like this, CS 50, has never been about teaching you how to program. Like that's actually one of the side effects of taking a class like this, but the overarching goal is to teach you how to think, how to take input and produce. Correct output and how to master these and other tools. And so by the end of the semester, not only, not only will you be acquainted with languages like Scratch, which we'll touch on today if you've not seen it already, languages like C and Python and SQL, HTML CSS and JavaScript, you'll be able to teach yourself new things ultimately and ultimately be able to tell computers increasingly what it is you want it to do, but you'll still be in the driver's seat, so to speak. You'll be the pilot, you'll be the conductor, whatever your preferred metaphor. And that's what I think is so empowering still about learning introductory material, foundational material, because you'll know what you're ultimately talking about and what you can in fact solve. We've been through this before, like when calculators came out, it's still valuable, I dare say all these years later to still know how to do addition and subtraction and whatnot.",
+    "ocr_text": "",
+    "visual_description": ""
+  },
+  {
+    "chunk_id": "cs50_week0_scratch_005",
+    "video_id": "week0_scratch",
+    "chapter_title": "Artificial Intelligence",
+    "start_time": 259.35,
+    "end_time": 318.63,
+    "transcript": "And yet I think back on some of my own math classes, I remember learning so many darn ways in college how to take derivatives and integrals. And after like the 6th process of that, I sort of realized, OK, I get it. I get the idea. Do I really need to know this many ways? And here too, with AI and with code, can you increasingly sort of master the ideas and then lean on a copilot, assistant to actually help you solve those same problems. So let's do some of this ourselves here. In fact, just to give you a teaser of what you'll be able to do yourselves before long, let me go ahead and open up a little something called Visual Studio Code, AKA VS code for short. This is popular, largely open source or free software that's used by real world people. In industry to write code and it's essentially a text editor similar to notepad, if you're familiar with that or text edit, kind of like Google Docs, but no bold facing and underlining and things like that that you'd find in word processing programs. And this is CS 50's version thereof. We're going to introduce you to this all the more next week, but for now, let's just give you a taste of what you can do with an environment like this.",
+    "ocr_text": "",
+    "visual_description": "A large yellow rubber duck is floating in front of a computer screen displaying a programming environment."
+  },
+  {
+    "chunk_id": "cs50_week0_scratch_006",
+    "video_id": "week0_scratch",
+    "chapter_title": "Artificial Intelligence",
+    "start_time": 318.76,
+    "end_time": 377.25,
+    "transcript": "So I'm going to switch over to this program already running VS code, and in this bottom of the screen, you're going to see a so-called terminal. Window again, more on that next week, but it's in this terminal window that I can write commands that tells the computer what I want it to do. For instance, let's suppose just for the sake of discussion that I want to make my own chatbot, not Chat GPT or Gemini and Claw. Like, let's make our own in some sense. So I'm going to code up a program called chat.ie, and you might be familiar that I, I'm using a language here.ie is it's just called Python, and if unfamiliar, you're in good company. You'll learn that too within a few weeks. And at the top. File here I can write my code and at the bottom of the file of the window here I can run my code. So here's how relatively easy it is nowadays to write even your own chatbot using the AI technologies that we already have. I'm going to go ahead and type a command like import. I'm going to go ahead and type the following from OpenAI, import OpenAI.",
+    "ocr_text": "",
+    "visual_description": "The instructor is standing on stage in front of an audience, gesturing towards a large yellow rubber duck and a computer screen displaying code."
+  },
+  {
+    "chunk_id": "cs50_week0_scratch_007",
+    "video_id": "week0_scratch",
+    "chapter_title": "Artificial Intelligence",
+    "start_time": 377.369,
+    "end_time": 432.22,
+    "transcript": "We'll learn what this means ultimately, but what I'm going to do is write my own program on top of. An API application programming interface that someone else provides a big company called OpenAI, and they're providing features and functionality that now I can write code against. I'm going to create a so-called client, which is to say a program of my own that's going to use this OpenAI software. And then I'm going to go ahead and ask this software for a response, and I'm going to set that equal to client.pos.create, whatever all that means, and then Inside of these parentheses, I'm going to say the following. The input I want to give to this underlying API is quote unquote something like in one sentence, what is CS 50? Much like I would ask Chachi PT itself. If you're familiar with things like Chat GPT and AI more generally nowadays, you know, there's this thing called models which are like statistical models that ultimately drive what the AI's can do.",
+    "ocr_text": "from openai import OpenAI\nclient = OpenAI()\nresponse =",
+    "visual_description": "A person standing in front of a computer screen displaying code and a terminal window."
+  },
+  {
+    "chunk_id": "cs50_week0_scratch_008",
+    "video_id": "week0_scratch",
+    "chapter_title": "Artificial Intelligence",
+    "start_time": 432.35,
+    "end_time": 489.75,
+    "transcript": "I'm gonna go ahead and say model equals quote unquote GPT 5, which is the latest and greatest version at least as of today. Now down in my terminal window I'm going to run a different command, Python of chat.ie and so long as I have made no typographical errors in this program, I should be able to ask OpenAI, not with Chat GPT.com, but with my own code for the answer to some question. But I want to know what the answer to that question is, so I actually want. Print out that response by saying print response output text. In other words, these 10 lines, and it's not even 10 lines because a few of them are blank, I've implemented my own chatbot that at the moment is hard coded, that is permanently configured to only answer one question for me. And let's see with the cross of the fingers. CS 50 is Harvard University's introductory computer science course, the intellectual enterprises of Computer Science and the Art of programming. Weirdly familiar, covering problem solving algorithms, data structures, and more using languages like CPython and SQL.",
+    "ocr_text": "from openai import OpenAI\nclient = OpenAI()\nresponse = client.responses.create(\n    input=\"In one sentence, what is CS50?\",\n    model=\"gpt-5\"\n)\nprint",
+    "visual_description": "A person is standing in front of a computer screen displaying code and terminal commands."
+  },
+  {
+    "chunk_id": "cs50_week0_scratch_009",
+    "video_id": "week0_scratch",
+    "chapter_title": "Artificial Intelligence",
+    "start_time": 489.79,
+    "end_time": 543.63,
+    "transcript": "OK, interesting, but let's make the program itself more dynamic. Suppose you wanted to write code that actually asks the human what their question is, because very quickly might we want to learn something more than just this one question. So up here, I'm going to go and change my code and type some. Like this type prompt equals input with parentheses. More on this another time too, but what I'm going to ask the user for is to give me an actual prompt. That is a question that I want this AI to answer. And down here, what you'll notice, even if you've never programmed before, is that I can do something somewhat intuitive insofar as line 5 is now asking the human for input. Let's just stipulate that this equal sign means store that answer in a variable called prompt, where variables just like in math. Y or Z. Let's go ahead and store that in prompt. So the input I want to give to OpenAI now is that actual prompt. So it's a placeholder containing whatever keystrokes the human typed in.",
+    "ocr_text": "",
+    "visual_description": "Instructor speaking, no visual aids."
+  },
+  {
+    "chunk_id": "cs50_week0_scratch_010",
+    "video_id": "week0_scratch",
+    "chapter_title": "Artificial Intelligence",
+    "start_time": 543.88,
+    "end_time": 603.179,
+    "transcript": "If I now run that same command again, Python of chat.ie, hit enter, cross my fingers, I'll see now dynamic prompting. So what's the question I might want to ask? Well, let's just say it again in one sentence, whoops, in one sentence, what is CS 50 mark? Enter. And now the answer comes back as probably roughly the same but a little bit different, a variant thereof, but maybe we can distill this even more succinctly. How about let's run it again? Python of chat.pi and let's say in one word what is CS 50 and see if the underlying AI obliges. And After a pause course in a word, so that's not all that incorrect, and maybe we can have a little fun with this now. How about in one word, which is, which is better? maybe Harvard or Stanford Question mark. Hope you picked right. Let's see.",
+    "ocr_text": "from openai import OpenAI\nclient = OpenAI()\nprompt = input(\"Prompt:\")\nresponse = client.responses.create(\n    input_prompt,\n    model=\"gpt-5\"\n)\nprint(response.output_text)",
+    "visual_description": "A person standing in front of a computer screen displaying a Python script for interacting with OpenAI's API."
+  }
+]

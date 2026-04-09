@@ -1,0 +1,8 @@
+youtube-transcript-api>=0.6.2
+yt-dlp>=2025.1.0
+tqdm>=4.66.0
+imageio-ffmpeg>=0.6.0
+google-genai>=0.1.0
+openai>=1.40.0
+tenacity>=8.2.0
+python-dotenv>=1.0.0

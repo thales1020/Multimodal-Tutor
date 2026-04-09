@@ -1,0 +1,79 @@
+[
+  {
+    "url": "https://youtube.com/watch?v=UuIEbpQms8o",
+    "video_id": "UuIEbpQms8o",
+    "title": "CS50x 2026 - Lecture 0 - Scratch",
+    "week": 0,
+    "semantic_video_id": "week0_scratch"
+  },
+  {
+    "url": "https://youtube.com/watch?v=SlqjA04_dpk",
+    "video_id": "SlqjA04_dpk",
+    "title": "CS50x 2026 - Lecture 1 - C",
+    "week": 1,
+    "semantic_video_id": "week1_c"
+  },
+  {
+    "url": "https://youtube.com/watch?v=h5Gc1n8ZuU8",
+    "video_id": "h5Gc1n8ZuU8",
+    "title": "CS50x 2026 - Lecture 2 - Arrays",
+    "week": 2,
+    "semantic_video_id": "week2_arrays"
+  },
+  {
+    "url": "https://youtube.com/watch?v=6Svu_ae5ebk",
+    "video_id": "6Svu_ae5ebk",
+    "title": "CS50x 2026 - Lecture 3 - Algorithms",
+    "week": 3,
+    "semantic_video_id": "week3_algorithms"
+  },
+  {
+    "url": "https://youtube.com/watch?v=db0H0U13YsA",
+    "video_id": "db0H0U13YsA",
+    "title": "CS50x 2026 - Lecture 4 - Memory",
+    "week": 4,
+    "semantic_video_id": "week4_memory"
+  },
+  {
+    "url": "https://youtube.com/watch?v=PmAI76OGE_E",
+    "video_id": "PmAI76OGE_E",
+    "title": "CS50x 2026 - Lecture 5 - Data Structures",
+    "week": 5,
+    "semantic_video_id": "week5_data_structures"
+  },
+  {
+    "url": "https://youtube.com/watch?v=Rl0ludWTLxs",
+    "video_id": "Rl0ludWTLxs",
+    "title": "CS50x 2026 - Lecture 6 - Python",
+    "week": 6,
+    "semantic_video_id": "week6_python"
+  },
+  {
+    "url": "https://youtube.com/watch?v=oqRU2So6Z2Y",
+    "video_id": "oqRU2So6Z2Y",
+    "title": "CS50x 2026 - Lecture 7 - SQL",
+    "week": 7,
+    "semantic_video_id": "week7_sql"
+  },
+  {
+    "url": "https://youtube.com/watch?v=yYst7puZXjw",
+    "video_id": "yYst7puZXjw",
+    "title": "CS50x 2026 - Lecture 8 - HTML, CSS, JavaScript",
+    "week": 8,
+    "semantic_video_id": "week8_html_css_javascript"
+  },
+  {
+    "url": "https://youtube.com/watch?v=am7POvSZ4GE",
+    "video_id": "am7POvSZ4GE",
+    "title": "CS50x 2026 - Lecture 9 - Flask",
+    "week": 9,
+    "semantic_video_id": "week9_flask"
+  },
+  {
+    "url": "https://youtube.com/watch?v=ApQTgFkf8TU",
+    "video_id": "ApQTgFkf8TU",
+    "title": "CS50x 2026 - Lecture 10 - The End",
+    "week": 10,
+    "semantic_video_id": "week10_the_end"
+  }
+]
