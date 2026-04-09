@@ -1,4 +1,4 @@
-Dưới đây là bản kế hoạch dự án hoàn chỉnh, súc tích và cập nhật chiến lược dữ liệu tự xây dựng từ khóa học CS50x.
+
 
 ### 1. Định nghĩa bài toán (Business Problem)
 * [cite_start]**Bối cảnh:** Các video bài giảng CS50x kéo dài hơn 2 giờ, khiến học viên khó tìm kiếm các đoạn mã, sơ đồ bộ nhớ hoặc hình vẽ minh họa cụ thể [cite: 8-10, 12].
